@@ -1,0 +1,110 @@
+.footer {
+  position: relative;
+  background: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80") center/cover no-repeat;
+  padding: 60px 20px 25px;     /* antes 90px y 40px → ahora más compacto */
+  margin-top: 40px;            /* menos espacio entre contenido y footer */
+  color: white;
+}
+
+.footer-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(3px);
+}
+
+/* GRID DEL FOOTER — más compacto */
+.footer-content {
+  position: relative;
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;                  /* antes 40 → más compacto */
+  padding-bottom: 10px;
+}
+
+/* COLUMNAS */
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;                   /* antes 10 → más compactado */
+}
+
+/* LOGO */
+.footer-logo {
+  width: 140px;
+  margin-bottom: 5px;
+}
+
+.footer-subtext {
+  font-size: 12px;
+  opacity: 0.9;
+  line-height: 1.3;
+  max-width: 200px;
+}
+
+/* TITULOS */
+.footer-title {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+/* LISTAS */
+.footer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-list li {
+  font-size: 13px;
+  margin-bottom: 4px;          /* más compacto */
+  opacity: 0.9;
+}
+
+/* ICONOS REDES */
+.footer-socials {
+  display: flex;
+  gap: 10px;                   /* antes 12px */
+  margin-top: 8px;
+}
+
+.footer-socials a {
+  font-size: 17px;             /* ligeramente más pequeño */
+  color: white;
+  transition: 0.2s;
+}
+
+.footer-socials a:hover {
+  color: #4ecbff;
+}
+
+/* COPYRIGHT MÁS CERCA DEL CONTENIDO */
+.footer-bottom {
+  position: relative;
+  margin-top: 15px;          /* antes 40 → ahora compacto */
+  text-align: center;
+  font-size: 13px;
+  opacity: 0.9;
+  padding-top: 8px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+    text-align: center;
+  }
+
+  .footer-col {
+    align-items: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+  }
+}

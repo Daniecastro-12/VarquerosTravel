@@ -1,0 +1,180 @@
+/* PALETA */
+:root {
+  --white: #ffffff;
+  --soft: #f8f8f8;
+  --primary: #1f2937;
+  --gold: #d4a657;
+  --shadow: 0 10px 25px rgba(0,0,0,0.08);
+  --radius: 18px;
+}
+
+/* CONTENEDOR GENERAL */
+.pro-dashboard {
+  padding: 20px 40px;
+  background: var(--soft);
+}
+
+/* TITULOS */
+.dash-title {
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+
+.dash-subtitle {
+  font-size: 17px;
+  color: #666;
+  margin-bottom: 25px;
+}
+
+/* GRID DE KPI */
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  margin-bottom: 40px;
+}
+
+/* KPI CARD */
+.kpi-card {
+  background: var(--white);
+  padding: 25px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border-left: 6px solid var(--gold);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;      /* CENTRAR ICONO */
+  justify-content: center;
+  text-align: center;
+  min-height: 160px;        /* TAMANO UNIFORME */
+  gap: 10px;
+}
+
+.kpi-icon {
+  color: var(--primary);
+  display: block;
+  margin: 0 auto;
+}
+
+.kpi-card h4 {
+  color: #666;
+  font-size: 15px;
+}
+
+.kpi-card span {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* DESTINOS */
+.destinos-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  margin-bottom: 45px;
+}
+
+.destino-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  text-align: center;
+  padding-bottom: 12px;
+}
+
+.destino-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.destino-card h3 {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.destino-card p {
+  font-size: 14px;
+  color: #666;
+}
+
+/* SECCIÓN TITULO */
+.section-title {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  color: var(--primary);
+}
+
+/* TABLA */
+.table-container {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+
+/* BUSCADOR */
+.toolbar {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 18px;
+}
+
+.search-box {
+  background: white;
+  border-radius: 10px;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  box-shadow: var(--shadow);
+  flex: 1;
+}
+
+.search-icon {
+  color: #777;
+  margin-right: 8px;
+}
+
+.input-search {
+  border: none;
+  outline: none;
+  flex: 1;
+  background: transparent;
+  font-size: 15px;
+}
+
+.input-filter {
+  border-radius: 10px;
+  padding: 10px 14px;
+  background: white;
+  box-shadow: var(--shadow);
+  border: 1px solid #ddd;
+}
+
+/* TABLA */
+.pro-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.pro-table th {
+  background: #f1f1f1;
+  padding: 14px;
+  text-align: left;
+  color: #555;
+}
+
+.pro-table td {
+  padding: 14px;
+  border-bottom: 1px solid #eee;
+}
+
+.pro-table tr:hover td {
+  background: #fafafa;
+}

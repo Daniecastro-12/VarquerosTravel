@@ -1,0 +1,169 @@
+/* ===========================
+   CONTENEDOR GENERAL
+=========================== */
+.reservas-container {
+  padding: 25px 40px;
+  background: #f8f8f8;
+}
+
+/* ===========================
+   HEADER
+=========================== */
+.reservas-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.reservas-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #43516e;
+}
+
+.btn-new-reserva {
+  background: #d4a657;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-new-reserva:hover {
+  background: #b88c45;
+}
+
+/* ===========================
+   TABLA
+=========================== */
+.reservas-table-container {
+  padding: 20px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  width: 100%;
+  overflow: hidden;
+}
+
+.reservas-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.reservas-table th {
+  background: #f0f0f0;
+  padding: 14px;
+  text-align: center;
+  font-weight: 600;
+  color: #53627c;
+}
+
+.reservas-table td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+}
+
+/* Hover suave */
+.reservas-table tr:hover td {
+  background: #fafafa;
+}
+
+/* ===========================
+   INPUTS DE EDICIÓN
+=========================== */
+.edit-input {
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 110px;
+  text-align: center;
+}
+
+/* Inputs blancos */
+.white-input {
+  background: white !important;
+  color: black !important;
+}
+
+/* ===========================
+   QUITAR COLOR NEGRO A FLECHAS
+=========================== */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  filter: invert(1);
+  opacity: 0.6;
+}
+
+input[type="number"]:hover::-webkit-inner-spin-button,
+input[type="number"]:hover::-webkit-outer-spin-button {
+  opacity: 1;
+}
+
+/* ===========================
+   BOTONES DE ACCIONES
+=========================== */
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ICONOS */
+.action-btn {
+  padding: 7px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* EDITAR */
+.btn-edit {
+  background: #e1edff;
+  color: #1d4ed8;
+}
+
+.btn-edit:hover {
+  background: #cddffc;
+}
+
+/* GUARDAR */
+.btn-save {
+  background: #d4f8d4;
+  color: #2f7a2f;
+}
+
+.btn-save:hover {
+  background: #c0efc0;
+}
+
+/* CANCELAR */
+.btn-cancel {
+  background: #f0f0f0;
+  color: #444;
+}
+
+.btn-cancel:hover {
+  background: #e3e3e3;
+}
+
+/* ELIMINAR */
+.btn-delete {
+  background: #ffd9d9;
+  color: #c81e1e;
+}
+
+.btn-delete:hover {
+  background: #ffbcbc;
+}

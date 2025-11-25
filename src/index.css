@@ -1,0 +1,9 @@
+/* DAISYUI + TAILWIND (versión sin postcss config) */
+@import "https://cdn.jsdelivr.net/npm/daisyui@4.10.2/dist/full.css";
+
+/* Fondo elegante de tu marca */
+body {
+  background-color: #F4E9DA;
+  margin: 0;
+  padding: 0;
+}

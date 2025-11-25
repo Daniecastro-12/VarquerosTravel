@@ -1,0 +1,76 @@
+.login-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* FORMULARIO */
+.form-container {
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #f7f8fc;
+}
+
+.form-logo {
+  width: 250px;
+  margin-bottom: 25px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 24px;
+  color: #1b1f3b;
+  text-align: center;
+}
+
+.subtitle {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.form-group {
+  width: 70%;
+  margin-bottom: 20px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: white;
+}
+
+.login-btn {
+  width: 70%;
+  padding: 14px;
+  background: #1e5bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* IMÁGENES DERECHA */
+.right-images {
+  width: 50vw;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+.row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.right-images img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

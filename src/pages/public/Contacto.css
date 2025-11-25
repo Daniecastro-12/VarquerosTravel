@@ -1,0 +1,114 @@
+/* CONTENEDOR PRINCIPAL */
+.contacto-container {
+  padding: 40px 0 10px;
+  background: #f4e9da;
+}
+
+/* TÍTULO GLOBAL */
+.contact-main-title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 30px;
+  color: #1d293f;
+}
+
+/* CONTENEDOR SUPERIOR */
+.contacto-top {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+/* INFO CARD */
+.contact-info-card {
+  width: 420px;
+  background: white;
+  padding: 30px 35px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 20px rgba(0,0,0,0.12);
+  text-align: center;
+}
+
+.contact-info-card h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.contact-description {
+  font-size: 14px;
+  margin-bottom: 22px;
+  color: #555;
+}
+
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+  font-size: 15px;
+  color: #444;
+  justify-content: center;
+}
+
+.contact-icon {
+  color: #007bff;
+  font-size: 18px;
+}
+
+/* MAPA */
+.contact-map iframe {
+  width: 350px;
+  height: 240px;
+  border: 0;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* FORMULARIO */
+.contact-form-card {
+  width: 85%;
+  margin: auto;
+  background: white;
+  padding: 30px 40px 20px;
+  border-radius: 18px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+}
+
+/* INPUTS */
+.input-field,
+.input-textarea {
+  width: 100%;
+  padding: 13px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  margin-bottom: 18px;
+  font-size: 15px;
+  background: #f8f8f8;
+}
+
+.input-textarea {
+  height: 120px;
+  resize: none;
+}
+
+/* BOTÓN AZUL */
+.contact-btn {
+  width: 100%;
+  padding: 14px;
+  background: #007bff !important;
+  color: white !important;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.contact-btn:hover {
+  background: #0066d6 !important;
+}

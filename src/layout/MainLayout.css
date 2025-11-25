@@ -1,0 +1,73 @@
+/* ===============================
+   CONTENEDOR PRINCIPAL
+================================ */
+.layout-container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden; 
+}
+
+/* ===============================
+   SIDEBAR FIJO (CORREGIDO)
+================================ */
+.layout-sidebar {
+  width: 240px;
+  height: 100%;
+  background: #F5E9D8;
+  border-right: 1px solid #e0d2bd;
+  flex-shrink: 0;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+
+  /* 🔥 IMPORTANTE: NO TAPAR EL CONTENIDO */
+  z-index: 50;
+  pointer-events: auto;
+}
+
+.layout-sidebar * {
+  pointer-events: auto; /* Solo clickeable lo visible */
+}
+
+/* ===============================
+   CONTENIDO (A LA DERECHA)
+================================ */
+.layout-content {
+  margin-left: 240px;
+  width: calc(100% - 240px);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  /* 🔥 Esto asegura que el contenido se pueda clickear */
+  z-index: 10;
+  pointer-events: auto;
+}
+
+/* ===============================
+   NAVBAR SUPERIOR
+================================ */
+.layout-header {
+  height: 80px;
+  background: white;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  flex-shrink: 0;
+  z-index: 40;
+  pointer-events: auto;
+}
+
+/* ===============================
+   CONTENIDO INTERNO SCROLLEABLE
+================================ */
+.layout-main {
+  flex: 1;
+  overflow-y: auto;
+  padding: 30px;
+  background: #faf7f2;
+  position: relative;
+  z-index: 10;
+  pointer-events: auto;
+}
