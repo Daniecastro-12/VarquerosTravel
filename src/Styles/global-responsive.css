@@ -1,0 +1,125 @@
+/* =======================
+   AJUSTE GENERAL
+========================== */
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+body, html {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Contenedores principales */
+section, .container, .wrapper {
+  width: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+/* =======================
+   NAVBAR RESPONSIVE
+========================== */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    background: white;
+    padding: 12px 0;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .menu-btn {
+    display: block;
+    font-size: 26px;
+    cursor: pointer;
+  }
+}
+
+.menu-btn {
+  display: none;
+}
+
+/* =======================
+   BOTONES (NO CAMBIA ESTILO, SOLO AJUSTA)
+========================== */
+
+button, .btn {
+  max-width: 100%;
+  text-align: center;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  button, .btn {
+    font-size: 14px;
+    padding: 10px 18px;
+  }
+}
+
+/* =======================
+   TARJETAS DE DESTINOS
+========================== */
+
+.card-destino {
+  width: 100%;
+  max-width: 280px;
+  margin: auto;
+}
+
+.cards-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .card-destino {
+    max-width: 45%;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-destino {
+    max-width: 100%;
+  }
+}
+
+/* =======================
+   SLIDER RESPONSIVE
+========================== */
+
+.slider {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+}
+
+.slider img {
+  border-radius: 12px;
+  width: 100%;
+}

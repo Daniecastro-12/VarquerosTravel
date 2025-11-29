@@ -1,22 +1,18 @@
-/* ================================
-   GENERAL LAYOUT
-================================ */
 .reserva-layout {
   display: flex;
-  gap: 40px;
-  padding: 30px 40px;
-  background: #faf5ec;
+  justify-content: space-between;
+  width: 100%;
   min-height: 100vh;
-  flex-wrap: wrap;
+  background: #faf5ec;
+  padding: 30px 40px;
+  gap: 40px;
+  box-sizing: border-box;
 }
 
-/* ================================
-   CONTENEDOR IZQUIERDO
-================================ */
 .reserva-card {
-  flex: 2;
+  width: 55%;
   background: #ffffff;
-  padding: 30px;
+  padding: 35px;
   border-radius: 18px;
   border: 1px solid #e2d6c7;
   box-shadow: 0 6px 16px rgba(110, 90, 60, 0.12);
@@ -29,13 +25,9 @@
   color: #4a3f35;
 }
 
-/* ================================
-   UNIFICAR ESTILO DE TODAS LAS CAJAS
-================================ */
 .reserva-input,
 .reserva-select,
 .reserva-textarea,
-.auto-input,
 .auto-container input {
   width: 100%;
   padding: 12px;
@@ -43,7 +35,6 @@
   border: 1px solid #d5c8b5;
   background: #f8f3ea;
   font-size: 15px;
-  color: #4f4338;
   margin-top: 6px;
   transition: 0.25s ease;
 }
@@ -58,92 +49,17 @@
   box-shadow: 0 0 0 3px rgba(201, 168, 106, 0.25);
 }
 
-/* Labels */
 .reserva-label {
   margin-top: 18px;
   font-weight: 600;
   color: #5a4e43;
-  font-size: 15px;
 }
 
-/* Textarea */
 .reserva-textarea {
   min-height: 120px;
   resize: vertical;
 }
 
-/* ================================
-   AUTO INPUT DROPDOWN
-================================ */
-.auto-list {
-  max-height: 220px;
-  overflow-y: auto;
-  border: 1px solid #d5c8b5 !important;
-  border-radius: 12px !important;
-  background: white !important;
-  margin-top: 4px !important;
-  box-shadow: 0 6px 14px rgba(90, 70, 40, 0.15);
-}
-
-/* Scroll bonito */
-.auto-list::-webkit-scrollbar {
-  width: 6px;
-}
-
-.auto-list::-webkit-scrollbar-thumb {
-  background: #c9a86a;
-  border-radius: 10px;
-}
-
-.auto-list::-webkit-scrollbar-track {
-  background: #f3eadc;
-  border-radius: 10px;
-}
-
-.auto-item {
-  padding: 10px !important;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  color: #4a3f35;
-}
-
-.auto-item:hover {
-  background: #f8f3ea !important;
-}
-
-/* ================================
-   SELECT BONITO (Moneda y Pago)
-================================ */
-.reserva-select,
-.reserva-card select {
-  width: 100%;
-  padding: 12px;
-  border-radius: 12px;
-  border: 1px solid #d5c8b5;
-  background: #f8f3ea;
-  font-size: 15px;
-  color: #4f4338;
-  margin-top: 6px;
-  transition: 0.25s ease;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  cursor: pointer;
-  background-image: url("data:image/svg+xml;utf8,<svg fill='%236b5d52' height='14' viewBox='0 0 24 24' width='14' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
-  background-repeat: no-repeat;
-  background-position: right 14px center;
-}
-
-.reserva-card select option {
-  background: #ffffff;
-  color: #4f4338;
-  padding: 10px;
-}
-
-/* ================================
-   BOTONES
-================================ */
 .btn-crear,
 .btn-factura {
   width: 100%;
@@ -175,9 +91,6 @@
   background: #0f7d38;
 }
 
-/* ================================
-   CAJA ID DE RESERVA
-================================ */
 .id-box {
   margin-top: 18px;
   padding: 14px;
@@ -187,20 +100,21 @@
   text-align: center;
   font-size: 16px;
   font-weight: 600;
-  color: #5a4e43;
 }
 
-/* ================================
-   RESUMEN
-================================ */
+.contenedor-derecho {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
 .resumen-card {
-  flex: 1;
   padding: 25px;
   border-radius: 20px;
   border: 1px solid #e2d6c7;
   background: #ffffff;
   box-shadow: 0 6px 16px rgba(110, 90, 60, 0.12);
-  height: fit-content;
 }
 
 .resumen-title {
@@ -216,19 +130,14 @@
   padding: 12px 0;
   border-bottom: 1px solid #efe5d7;
   font-size: 15px;
-  color: #4f4338;
+  color: #4a3f35;
 }
 
-/* ================================
-   FACTURA
-================================ */
 .factura-box {
-  width: 100%;
-  margin-top: 25px;
   padding: 25px;
-  background: #ffffff;
   border-radius: 20px;
   border: 1px solid #e2d6c7;
+  background: #ffffff;
   box-shadow: 0 6px 16px rgba(110, 90, 60, 0.12);
 }
 
