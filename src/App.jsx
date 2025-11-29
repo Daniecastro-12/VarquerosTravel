@@ -24,8 +24,8 @@ import Reservaciones from "./pages/private/Reservaciones";
 import Disponibilidad from "./pages/private/Disponibilidad";
 
 // IMPORTANTE: estilos globales responsive
-import "./styles/app-layout.css";
-import "./styles/global-responsive.css";
+import "./Styles/app-layout.css";
+import "./Styles/global-responsive.css";
 
 export default function App() {
   const location = useLocation();
