@@ -2,45 +2,70 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
-  padding: 12px;
-  background: #f8fafc;
+  background: #faf7f2;
+  padding: 14px 18px;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  border: 1px solid #e0d6c8;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  margin-bottom: 20px;
 }
 
-/* Búsqueda */
 .search-input {
-  width: 250px;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #d0d7e1;
+  width: 280px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: #fffdf9;
+  border: 1px solid #e0d6c8;
+  color: #1d293f;
   font-size: 15px;
+  transition: 0.25s ease;
 }
 
-/* Grupo de botones */
+.search-input:focus {
+  outline: none;
+  border-color: #355fa3;
+  box-shadow: 0 0 0 3px rgba(53, 95, 163, 0.18);
+  background: #ffffff;
+}
+
 .action-buttons {
   display: flex;
   gap: 10px;
 }
 
-/* Botones generales */
 .action-btn {
-  padding: 10px 16px;
+  padding: 10px 18px;
+  border-radius: 10px;
   border: none;
-  border-radius: 8px;
-  font-weight: 600;
+  font-size: 14px;
   cursor: pointer;
-  transition: 0.2s;
+  font-weight: 600;
+  transition: 0.25s ease;
 }
 
-/* Colores */
-.btn-save { background: #0ea5e9; color: white; }
-.btn-edit { background: #eab308; color: white; }
-.btn-delete { background: #ef4444; color: white; }
+.btn-save {
+  background: #355fa3;
+  color: white;
+}
 
-/* Hover animado */
-.action-btn:hover {
-  transform: translateY(-2px);
-  opacity: 0.9;
+.btn-save:hover {
+  background: #2c4f87;
+}
+
+.btn-edit {
+  background: #e6d7bd;
+  color: #1d293f;
+}
+
+.btn-edit:hover {
+  background: #d9c8a9;
+}
+
+.btn-delete {
+  background: #d9534f;
+  color: white;
+}
+
+.btn-delete:hover {
+  background: #c0392b;
 }

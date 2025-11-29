@@ -11,7 +11,7 @@ export default function Clientes() {
   const [modalVisible, setModalVisible] = useState(false);
   const [clienteEdit, setClienteEdit] = useState(null);
 
-  // Cargar lista inicial
+  
   useEffect(() => {
     cargarClientes();
   }, []);

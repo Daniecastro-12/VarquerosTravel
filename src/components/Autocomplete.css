@@ -1,59 +1,66 @@
 .auto-container {
   position: relative;
+  width: 100%;
   margin-bottom: 18px;
 }
 
 .auto-label {
   display: block;
   margin-bottom: 6px;
-  font-size: 15px;
   font-weight: 600;
-  color: #333;
+  color: #1d293f;
+  font-size: 15px;
 }
 
 .auto-input {
   width: 100%;
-  padding: 12px;
-  border: 1px solid #ddd;
+  padding: 12px 14px;
+  border: 1px solid #e0d6c8;
   border-radius: 10px;
+  background: #faf7f2;
   font-size: 15px;
-  background: #ffffff;
-  transition: 0.2s;
+  transition: 0.25s ease;
+  color: #1d293f;
 }
 
 .auto-input:focus {
-  border-color: #4a8cff;
-  box-shadow: 0 0 0 3px rgba(74,140,255,0.25);
+  background: #fffdf9;
+  border-color: #355fa3;
   outline: none;
+  box-shadow: 0 0 0 3px rgba(53, 95, 163, 0.18);
 }
 
 .auto-list {
   position: absolute;
-  top: 100%;
+  top: 105%;
   left: 0;
-  background: white;
   width: 100%;
-  border-radius: 10px;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-  max-height: 200px;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e0d6c8;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  max-height: 260px;
   overflow-y: auto;
-  z-index: 99;
+  z-index: 50;
 }
 
 .auto-item {
-  padding: 10px 12px;
+  padding: 12px 14px;
   cursor: pointer;
-  transition: 0.2s;
-  border-bottom: 1px solid #f3f3f3;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: 0.2s ease-in-out;
+  color: #1d293f;
 }
 
 .auto-item:hover {
-  background: #f5f5f5;
+  background: #f4e9da;
 }
 
 .no-result {
-  padding: 10px;
+  padding: 12px 14px;
   text-align: center;
-  font-size: 13px;
-  color: #777;
+  color: #7f7f7f;
+  font-size: 14px;
 }
