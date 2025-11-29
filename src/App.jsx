@@ -23,9 +23,12 @@ import NuevaReservacion from "./pages/private/NuevaReservacion";
 import Reservaciones from "./pages/private/Reservaciones";
 import Disponibilidad from "./pages/private/Disponibilidad";
 
+// IMPORTANTE: estilos globales responsive
+import "./styles/app-layout.css";
+import "./styles/global-responsive.css";
+
 export default function App() {
   const location = useLocation();
-
   const isLogged = localStorage.getItem("loggedIn") === "true";
 
   const privateRoutes = [
@@ -48,18 +51,16 @@ export default function App() {
 
   const hideLayout = ["/login", "/registro"];
 
-  // ⭐⭐ ÚNICO CAMBIO QUE NECESITÁS
-  const shouldHideLayout = hideLayout.some(r =>
+  const shouldHideLayout = hideLayout.some((r) =>
     location.pathname.startsWith(r)
   );
 
   return (
-    <>
+    <div className="app-wrapper">
       {!shouldHideLayout && !isPrivate && <PublicNavbar />}
 
       <div style={{ paddingTop: !shouldHideLayout && !isPrivate ? "90px" : "0px" }}>
         <Routes>
-
           {/* Public pages */}
           <Route path="/" element={<Home />} />
           <Route path="/destinos" element={<Destinos />} />
@@ -77,11 +78,10 @@ export default function App() {
             <Route path="/nueva-reservacion" element={<NuevaReservacion />} />
             <Route path="/disponibilidad" element={<Disponibilidad />} />
           </Route>
-
         </Routes>
       </div>
 
       {!shouldHideLayout && !isPrivate && <Footer />}
-    </>
+    </div>
   );
 }

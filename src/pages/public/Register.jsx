@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Register.css";
 
@@ -18,7 +18,32 @@ export default function Register() {
 
   const [loading, setLoading] = useState(false);
 
-  const API_REGISTER = "https://reserva-turistica.onrender.com/api/Auth/registro";
+  const API_REGISTER =
+    "https://reserva-turistica.onrender.com/api/Auth/registro";
+
+  // ---------------------------
+  // Cargar datos según el correo que escriba
+  // ---------------------------
+  useEffect(() => {
+    if (form.correo.trim() !== "") {
+      const key = `registerForm_${form.correo}`;
+      const saved = localStorage.getItem(key);
+
+      if (saved) {
+        setForm(JSON.parse(saved));
+      }
+    }
+  }, [form.correo]);
+
+  // ---------------------------
+  // Guardar el formulario para ese usuario específico
+  // ---------------------------
+  useEffect(() => {
+    if (form.correo.trim() !== "") {
+      const key = `registerForm_${form.correo}`;
+      localStorage.setItem(key, JSON.stringify(form));
+    }
+  }, [form]);
 
   const handleChange = (e) => {
     setForm({
@@ -35,9 +60,7 @@ export default function Register() {
       return;
     }
 
-    let dniClean = form.dni.trim();
-    dniClean = dniClean.replace(/^0+/, "");
-
+    let dniClean = form.dni.trim().replace(/^0+/, "");
     if (dniClean !== "" && !/^\d+$/.test(dniClean)) {
       alert("El DNI solo debe contener números.");
       return;
@@ -74,6 +97,10 @@ export default function Register() {
       }
 
       alert("Registro exitoso. Ahora puedes iniciar sesión.");
+
+      // 🔥 Eliminar solo los datos de ese usuario
+      localStorage.removeItem(`registerForm_${form.correo}`);
+
       navigate("/login", { replace: true });
 
     } catch (error) {
