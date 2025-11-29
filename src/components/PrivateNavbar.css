@@ -1,155 +1,173 @@
 .private-nav {
-  height: 75px;
-  width: 100%;
-  background: #ffffff;
-  border-bottom: 1px solid rgba(0,0,0,0.08);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 35px;
-  font-family: "Inter", sans-serif;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 150;
+  left: 0;
+  width: 100%;
+  height: 85px;
+  background: #f8f4ed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  z-index: 9999;
 }
 
-/* Lado Izquierdo */
 .nav-left {
   display: flex;
   flex-direction: column;
+  gap: 2px;
 }
 
 .nav-title {
-  margin: 0;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
-  color: #1d3557;
+  color: #2a2a2a;
 }
 
 .nav-subtitle {
   font-size: 13px;
-  font-weight: 500;
-  color: #6c7a89;
-  margin-top: -2px;
+  color: #6b6b6b;
 }
 
-/* Lado derecho completo */
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 18px;
-  position: relative; /* para posicionar el menú flotante */
+  gap: 20px;
 }
 
-/* Usuario completo como bloque */
 .user-block {
   display: flex;
   align-items: center;
-  gap: 10px;
-  cursor: pointer;
-  padding: 6px 12px;
+  gap: 12px;
+  padding: 6px 10px;
   border-radius: 12px;
-  transition: 0.2s ease;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
 .user-block:hover {
   background: rgba(0,0,0,0.05);
 }
 
-/* Avatar */
 .avatar {
-  width: 45px;
-  height: 45px;
-  background: #1d3557;
+  width: 42px;
+  height: 42px;
+  background: #d9d9d9;
   color: white;
-  font-weight: 700;
   border-radius: 50%;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 18px;
+  overflow: hidden;
 }
 
-/* Usuario */
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
 .user-name {
-  margin: 0;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
-  color: #1d3557;
 }
 
 .user-role {
-  margin: 0;
-  font-size: 12px;
-  color: #6c7a89;
-  margin-top: -3px;
+  font-size: 13px;
+  color: #6b6b6b;
 }
 
-/* Ícono de los tres puntitos */
 .menu-dots {
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 28px;
   cursor: pointer;
-  padding: 5px 10px;
+  padding: 6px 10px;
   border-radius: 12px;
-  transition: 0.2s ease;
 }
 
 .menu-dots:hover {
-  background: rgba(0,0,0,0.08);
+  background: rgba(0,0,0,0.05);
 }
 
-/* MENÚ FLOTANTE */
-.user-menu {
-  position: absolute;
-  top: 68px;
-  right: 0;
-  width: 230px;
-  background: #fff;
-  border-radius: 14px;
-  padding: 15px 18px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-  z-index: 200;
-  animation: fadeInMenu 0.15s ease-out;
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 950px) {
+  .nav-title {
+    font-size: 18px;
+  }
+
+  .nav-subtitle {
+    font-size: 11px;
+  }
+
+  .avatar {
+    width: 38px;
+    height: 38px;
+    font-size: 16px;
+  }
+
+  .user-name {
+    font-size: 14px;
+  }
 }
 
-@keyframes fadeInMenu {
-  from { opacity: 0; transform: translateY(-5px); }
-  to { opacity: 1; transform: translateY(0); }
+@media (max-width: 700px) {
+  .private-nav {
+    height: 70px;
+    padding: 0 18px;
+  }
+
+  .nav-left {
+    gap: 0;
+  }
+
+  .nav-title {
+    font-size: 17px;
+  }
+
+  .nav-subtitle {
+    display: none;
+  }
+
+  .avatar {
+    width: 34px;
+    height: 34px;
+    font-size: 15px;
+  }
+
+  .user-info {
+    display: none;
+  }
+
+  .nav-right {
+    gap: 10px;
+  }
+
+  .menu-dots {
+    font-size: 26px;
+  }
 }
 
-.menu-title {
-  font-size: 15px;
-  font-weight: 700;
-  color: #344767;
-  margin: 0;
-}
+@media (max-width: 450px) {
+  .nav-title {
+    font-size: 15px;
+  }
 
-.menu-role {
-  display: block;
-  font-size: 13px;
-  color: #6c7a89;
-  margin-bottom: 10px;
-  border-bottom: 1px solid #ececec;
-  padding-bottom: 10px;
-}
+  .avatar {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+  }
 
-.menu-item {
-  padding: 10px;
-  background: #f7f7f7;
-  border-radius: 8px;
-  margin-top: 10px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: 0.1s ease-in-out;
-}
-
-.menu-item:hover {
-  background: #eaeaea;
-}
-
-.logout {
-  background: #ffe5e5 !important;
-  color: red;
-  font-weight: 600;
+  .menu-dots {
+    font-size: 24px;
+  }
 }

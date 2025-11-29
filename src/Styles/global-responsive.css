@@ -1,106 +1,125 @@
-html, body {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-}
+/* =======================
+   AJUSTE GENERAL
+========================== */
 
 * {
-  max-width: 100%;
   box-sizing: border-box;
 }
 
-.app-wrapper {
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+body, html {
   width: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
   overflow-x: hidden;
 }
 
-@media (max-width: 1024px) {
-  .app-wrapper {
-    padding: 0 26px;
-  }
+/* Contenedores principales */
+section, .container, .wrapper {
+  width: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
+}
 
-  img {
-    width: 100%;
-    height: auto;
-  }
+/* =======================
+   NAVBAR RESPONSIVE
+========================== */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
 }
 
 @media (max-width: 768px) {
-  .app-wrapper {
-    padding: 0 16px;
-  }
-
-  nav, .navbar, .nav-links {
-    flex-direction: column !important;
+  .nav-links {
+    display: none;
     width: 100%;
-    align-items: center;
-    gap: 8px;
+    flex-direction: column;
+    background: white;
+    padding: 12px 0;
   }
 
-  nav a, .nav-link {
-    font-size: 14px;
-    padding: 8px 0;
+  .nav-links.show {
+    display: flex;
   }
 
-  nav img {
-    width: 120px;
+  .menu-btn {
+    display: block;
+    font-size: 26px;
+    cursor: pointer;
   }
+}
 
+.menu-btn {
+  display: none;
+}
+
+/* =======================
+   BOTONES (NO CAMBIA ESTILO, SOLO AJUSTA)
+========================== */
+
+button, .btn {
+  max-width: 100%;
+  text-align: center;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
   button, .btn {
-    width: 100% !important;
-    font-size: 15px !important;
-    padding: 12px !important;
+    font-size: 14px;
+    padding: 10px 18px;
   }
+}
 
-  input, select, textarea {
-    width: 100% !important;
-    font-size: 15px;
-  }
+/* =======================
+   TARJETAS DE DESTINOS
+========================== */
 
-  .card, .destino-card, .servicio-card, .resumen-card, .factura-box, .reserva-card {
-    width: 100% !important;
-    padding: 18px !important;
-  }
+.card-destino {
+  width: 100%;
+  max-width: 280px;
+  margin: auto;
+}
 
-  .cards-container, .grid, .destinos-grid {
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-    gap: 20px;
-  }
+.cards-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
 
-  .carousel-container, .slider {
-    width: 100% !important;
-  }
-
-  h1, h2, h3 {
-    font-size: 22px !important;
-    text-align: center;
+@media (max-width: 768px) {
+  .card-destino {
+    max-width: 45%;
   }
 }
 
 @media (max-width: 480px) {
-  .app-wrapper {
-    padding: 0 12px;
+  .card-destino {
+    max-width: 100%;
   }
+}
 
-  nav img {
-    width: 100px;
-  }
+/* =======================
+   SLIDER RESPONSIVE
+========================== */
 
-  button, .btn {
-    font-size: 14px;
-    padding: 10px;
-  }
+.slider {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+}
 
-  .card, .destino-card, .servicio-card {
-    margin-bottom: 15px;
-  }
-
-  h1, h2, h3 {
-    font-size: 19px !important;
-  }
+.slider img {
+  border-radius: 12px;
+  width: 100%;
 }

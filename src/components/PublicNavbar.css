@@ -13,7 +13,6 @@
   z-index: 9999;
 }
 
-/* Zona izquierda */
 .left {
   display: flex;
   align-items: center;
@@ -30,7 +29,6 @@
   color: #0b1d36;
 }
 
-/* Centro: enlaces */
 .center {
   display: flex;
   gap: 28px;
@@ -47,7 +45,6 @@
   color: #1d8adb;
 }
 
-/* Botones derecha */
 .right {
   display: flex;
   gap: 12px;
@@ -69,4 +66,73 @@
   padding: 8px 18px;
   border-radius: 20px;
   cursor: pointer;
+}
+
+.menu-btn {
+  display: none;
+  font-size: 32px;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* ------------------ RESPONSIVE ------------------ */
+
+@media (max-width: 900px) {
+  .public-navbar {
+    height: 70px;
+    padding: 0 20px;
+  }
+
+  .nav-logo {
+    height: 38px;
+  }
+
+  .brand {
+    font-size: 14px;
+  }
+
+  .right {
+    display: none;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
+  .center {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: #f8f4ed;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+    gap: 18px;
+  }
+
+  .center.show {
+    display: flex;
+  }
+
+  .center a {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 500px) {
+  .public-navbar {
+    padding: 0 14px;
+    height: 65px;
+  }
+
+  .nav-logo {
+    height: 34px;
+  }
+
+  .brand {
+    font-size: 13px;
+  }
 }
