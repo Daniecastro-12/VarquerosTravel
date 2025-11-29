@@ -1,218 +1,186 @@
-
 .servicios-page {
-  padding: 15px 25px;
+  width: 100%;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .titulo {
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 700;
-  margin-bottom: 20px;
 }
 
 .buscador {
   width: 100%;
-  padding: 12px 15px;
-  margin-bottom: 20px;
-  border-radius: 12px;
-  border: 1px solid #d9d9d9;
-  background: #ffffff;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid #ddd;
   font-size: 15px;
-  color: #333;
-  outline: none;
-  transition: 0.3s;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
-.buscador:focus {
-  border-color: #4a8cff;
-  box-shadow: 0 0 0 3px rgba(74,140,255,0.25);
-}
-
-/* ====== TARJETAS DE SERVICIOS ====== */
+/* TARJETAS */
 .servicio-card {
+  width: 100%;
+  background: white;
+  padding: 20px;
+  border-radius: 18px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.12);
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 18px;
-  background: #ffffff;
-  margin-bottom: 18px;
-  border-radius: 14px;
-  box-shadow: 0px 4px 10px rgba(0,0,0,0.07);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  gap: 20px;
 }
 
-.servicio-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0px 6px 16px rgba(0,0,0,0.10);
+.servicio-info {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .servicio-info h3 {
+  font-size: 20px;
   margin: 0;
-  font-size: 19px;
-  font-weight: 600;
 }
 
-.servicio-info p {
-  margin: 4px 0 6px;
-  color: #666;
-}
-
-/* ESTADOS */
 .estado-activo {
-  color: #0a8f28;
-  font-weight: bold;
+  background: #31b86a;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 14px;
+  font-size: 13px;
 }
 
 .estado-inactivo {
-  color: #d33030;
-  font-weight: bold;
+  background: #c93a3a;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 14px;
+  font-size: 13px;
 }
 
-/* ====== BOTONES DE TARJETA ====== */
+/* BOTONES */
+.servicio-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 160px;
+}
+
 .servicio-buttons button {
-  margin-left: 8px;
-  padding: 8px 14px;
-  border-radius: 8px;
+  padding: 10px 0;
+  border-radius: 12px;
   border: none;
   cursor: pointer;
-  font-size: 14px;
-  transition: 0.2s;
+  font-weight: 600;
 }
 
-/* Ver detalles */
 .btn-detalles {
-  background: #f5f5f5;
-  color: #444;
+  background: #138fcf;
+  color: white;
 }
 
-.btn-detalles:hover {
-  background: #e7e7e7;
-}
-
-/* Editar */
 .btn-editar {
-  background: #e5f0ff;
-  color: #0057d8;
+  background: #f0c64b;
+  color: white;
 }
 
-.btn-editar:hover {
-  background: #d7e7ff;
-}
-
-/* Eliminar */
 .btn-eliminar {
-  background: #ffe5e5;
-  color: #d33030;
+  background: #d9534f;
+  color: white;
 }
 
-.btn-eliminar:hover {
-  background: #ffd3d3;
-}
-
-/* ===========================================
-   ================ MODAL =====================
-   =========================================== */
-
+/* MODAL */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(0,0,0,0.55);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999;
+  z-index: 9999;
 }
 
 .modal-content {
-  width: 430px;
-  background: #ffffff;
+  width: 420px;
+  background: white;
   padding: 25px;
-  border-radius: 14px;
-  box-shadow: 0px 8px 25px rgba(0,0,0,0.15);
-  animation: fadeIn 0.3s ease;
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.modal-content h3 {
-  margin-bottom: 15px;
-  font-size: 20px;
-  font-weight: 600;
-}
-
-/* Inputs del modal */
 .modal-content input,
 .modal-content textarea,
 .modal-content select {
   width: 100%;
-  margin: 6px 0 16px;
-  padding: 10px 12px;
-  background: #ffffff !important;
-  color: #333 !important;
-  border-radius: 8px;
+  padding: 10px;
+  border-radius: 12px;
   border: 1px solid #ccc;
-  outline: none;
-  box-shadow: none !important;
 }
 
-.modal-content input:focus,
-.modal-content textarea:focus,
-.modal-content select:focus {
-  border-color: #4a8cff;
-  box-shadow: 0 0 0 3px rgba(74,140,255,0.25);
-}
-
-/* Botones del modal */
 .modal-buttons {
   display: flex;
   justify-content: space-between;
+  margin-top: 15px;
 }
 
 .btn-guardar {
-  background: #4a8cff;
+  background: #31b86a;
   color: white;
-  padding: 10px 18px;
-  border-radius: 8px;
-  transition: 0.2s;
-}
-
-.btn-guardar:hover {
-  background: #3b76db;
+  padding: 10px 20px;
+  border-radius: 12px;
 }
 
 .btn-cancelar {
-  background: #ddd;
-  padding: 10px 18px;
-  border-radius: 8px;
-  transition: 0.2s;
-}
-
-.btn-cancelar:hover {
-  background: #c9c9c9;
-}
-
-/* Botón azul del modal de detalles */
-.btn-cerrar-detalles {
-  background: #0057d8;   /* 🔵 AZUL VARQUEROS TRAVELS */
+  background: #d9534f;
   color: white;
-  padding: 10px 18px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  font-size: 15px;
-  transition: 0.2s;
+  padding: 10px 20px;
+  border-radius: 12px;
+}
+
+.btn-cerrar-detalles {
   width: 100%;
-  text-align: center;
-  font-weight: 500;
+  background: #138fcf;
+  color: white;
+  padding: 10px;
+  border-radius: 12px;
+  margin-top: 15px;
 }
 
-.btn-cerrar-detalles:hover {
-  background: #0049b6;   /* azul más oscuro */
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .servicio-card {
+    flex-direction: column;
+  }
+
+  .servicio-info {
+    width: 100%;
+  }
+
+  .servicio-buttons {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .servicio-buttons button {
+    width: calc(33.3% - 10px);
+  }
+
+  .modal-content {
+    width: 90%;
+  }
 }
 
-/* Animación */
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.94); }
-  to { opacity: 1; transform: scale(1); }
+@media (max-width: 600px) {
+  .servicio-buttons button {
+    width: 100%;
+  }
 }

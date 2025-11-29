@@ -1,109 +1,103 @@
 .destinos-page {
-  width: 100%;
-  padding: 40px 0 80px;
-  background: #f4e9da;
+  padding: 40px;
 }
 
-/* -------------------------- TITULOS PRINCIPALES -------------------------- */
 .titulo-destinos {
-  text-align: center;
   font-size: 34px;
+  text-align: center;
+  margin-bottom: 25px;
   font-weight: 700;
-  margin-bottom: 45px;
-  color: #1d293f;
+  color: #1f2d3d;
 }
 
 .subtitulo {
-  text-align: center;
   font-size: 26px;
+  margin: 40px 0 20px;
   font-weight: 700;
-  margin: 60px 0 35px;
-  color: #21324c;
+  color: #1f2d3d;
 }
 
-/* -------------------------- CARRUSEL PREMIUM -------------------------- */
+/* ===============================
+   CARRUSEL
+=============================== */
+
 .carousel-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 60px;
   position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 40px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .carousel-content {
-  width: 420px;
+  width: 100%;
   text-align: center;
 }
 
-.carousel-card img {
-  width: 420px;
-  height: 260px;
-  object-fit: cover;
-  border-radius: 14px;
+.carousel-card {
   cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.22);
 }
 
-.carousel-card img:hover {
-  transform: scale(1.03);
-  box-shadow: 0px 10px 28px rgba(0, 0, 0, 0.28);
+.carousel-card img {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
 }
 
 .carousel-card p {
   margin-top: 10px;
+  font-size: 18px;
   font-weight: 600;
-  color: #333;
 }
 
-/* Botones Premium */
 .carousel-button {
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.85);
+  background: white;
   border: none;
+  font-size: 30px;
+  padding: 10px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  backdrop-filter: blur(6px);
-  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.25);
-  transition: 0.25s ease-in-out;
-  position: absolute;
-  top: 32%;
+  border-radius: 50px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: 0.2s ease;
 }
 
 .carousel-button:hover {
-  transform: scale(1.14);
-  background: #fff;
-  box-shadow: 0px 10px 28px rgba(0, 0, 0, 0.35);
+  background: #f1f1f1;
 }
 
+/* Botones */
 .left-btn {
-  left: 20%;
+  position: absolute;
+  left: -40px;
 }
 
 .right-btn {
-  right: 20%;
+  position: absolute;
+  right: -40px;
 }
 
-/* -------------------------- GRID DE DESTINOS -------------------------- */
+/* ===============================
+   GRID DESTINOS
+=============================== */
+
 .destinos-grid {
-  width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 55px 40px;
-  justify-items: center;
+  gap: 25px;
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .destino-card {
-  text-align: center;
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+  text-align: center;
+  transition: 0.2s ease;
 }
 
 .destino-card:hover {
@@ -111,64 +105,115 @@
 }
 
 .destino-card img {
-  width: 480px;
-  max-width: 100%;
-  height: 260px;
+  width: 100%;
+  height: 190px;
   object-fit: cover;
-  border-radius: 14px;
-  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.22);
-  transition: box-shadow 0.25s ease, transform 0.25s ease;
-}
-
-.destino-card img:hover {
-  transform: scale(1.03);
-  box-shadow: 0px 10px 28px rgba(0, 0, 0, 0.30);
 }
 
 .destino-card p {
-  margin-top: 12px;
-  font-weight: 600;
   font-size: 17px;
-  color: #334155;
+  padding: 10px 0;
+  font-weight: 600;
 }
 
-/* -------------------------- GRID DE HOTELES -------------------------- */
+/* ===============================
+   GRID HOTELES
+=============================== */
+
 .hoteles-grid {
-  width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
   display: grid;
+  gap: 25px;
+  margin-top: 20px;
   grid-template-columns: repeat(3, 1fr);
-  gap: 45px 30px;
-  justify-items: center;
 }
 
 .hotel-card {
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
   cursor: pointer;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
   text-align: center;
-  transition: transform 0.2s ease;
+  transition: 0.2s ease;
 }
 
 .hotel-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
 }
 
 .hotel-card img {
-  width: 330px;
-  height: 230px;
+  width: 100%;
+  height: 180px;
   object-fit: cover;
-  border-radius: 14px;
-  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.22);
-  transition: 0.25s ease;
-}
-
-.hotel-card img:hover {
-  transform: scale(1.03);
-  box-shadow: 0px 10px 28px rgba(0, 0, 0, 0.32);
 }
 
 .hotel-card p {
-  margin-top: 10px;
+  font-size: 17px;
+  padding: 10px 0;
   font-weight: 600;
-  color: #374151;
+}
+
+/* ===============================
+   RESPONSIVE
+=============================== */
+
+@media (max-width: 1200px) {
+  .destinos-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .destinos-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hoteles-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .left-btn {
+    left: -10px;
+  }
+
+  .right-btn {
+    right: -10px;
+  }
+}
+
+@media (max-width: 700px) {
+  .titulo-destinos {
+    font-size: 26px;
+  }
+
+  .subtitulo {
+    font-size: 22px;
+  }
+
+  .carousel-button {
+    font-size: 26px;
+    padding: 6px 12px;
+  }
+
+  .destinos-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .hoteles-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .carousel-card img {
+    max-height: 300px;
+  }
+}
+
+@media (max-width: 450px) {
+  .destinos-page {
+    padding: 20px;
+  }
+
+  .carousel-button {
+    display: none;
+  }
 }

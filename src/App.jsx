@@ -1,13 +1,10 @@
 import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 
-// Layout privado
 import MainLayout from "./layout/MainLayout";
 
-// Componentes públicos
 import PublicNavbar from "./components/PublicNavbar";
 import Footer from "./components/Footer";
 
-// Páginas públicas
 import Home from "./pages/public/Home";
 import Destinos from "./pages/public/Destinos";
 import Servicios from "./pages/public/Servicios";
@@ -15,7 +12,6 @@ import Contacto from "./pages/public/Contacto";
 import Login from "./pages/public/Login";
 import Register from "./pages/public/Register";
 
-// Páginas privadas
 import Dashboard from "./pages/private/Dashboard";
 import Clientes from "./pages/private/Clientes";
 import ServiciosAdmin from "./pages/private/ServiciosAdmin";
@@ -23,7 +19,6 @@ import NuevaReservacion from "./pages/private/NuevaReservacion";
 import Reservaciones from "./pages/private/Reservaciones";
 import Disponibilidad from "./pages/private/Disponibilidad";
 
-// IMPORTANTE: estilos globales responsive
 import "./Styles/app-layout.css";
 import "./Styles/global-responsive.css";
 
@@ -59,9 +54,15 @@ export default function App() {
     <div className="app-wrapper">
       {!shouldHideLayout && !isPrivate && <PublicNavbar />}
 
-      <div style={{ paddingTop: !shouldHideLayout && !isPrivate ? "90px" : "0px" }}>
+      <div
+        style={{
+          paddingTop:
+            !shouldHideLayout && !isPrivate
+              ? "125px"
+              : "0px"
+        }}
+      >
         <Routes>
-          {/* Public pages */}
           <Route path="/" element={<Home />} />
           <Route path="/destinos" element={<Destinos />} />
           <Route path="/servicios" element={<Servicios />} />
@@ -69,7 +70,6 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/registro" element={<Register />} />
 
-          {/* Private pages */}
           <Route element={<MainLayout />}>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/clientes" element={<Clientes />} />
