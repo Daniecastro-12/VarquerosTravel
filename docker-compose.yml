@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  api:
+    image: "suaz0/reserva_turistica"
+    container_name: reserva-api
+    ports:
+      - "3000:8080"   # http://localhost:3000 en tu máquina
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    restart: unless-stopped
+
+  frontend:
+    image: suaz0/varqueros-travel-frontend:latest   # <---  imagen de React
+    container_name: varqueros-travel-frontend
+    ports:
+      - "4000:80"     # http://localhost:4000 para el frontend
+    depends_on:
+      - api
+    environment:
+      - VITE_API_URL=http://api:8080  # URL interna hacia la API
+    restart: unless-stopped
