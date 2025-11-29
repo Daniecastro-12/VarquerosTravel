@@ -20,22 +20,17 @@ export default function PublicNavbar() {
         <span className="brand">VARQUEROS TRAVELS</span>
       </div>
 
-      <div className="menu-btn" onClick={() => setOpen(!open)}>
-        ☰
-      </div>
-
-      <div className={`center ${open ? "show" : ""}`}>
-        <Link to="/" onClick={() => setOpen(false)}>Inicio</Link>
-        <Link to="/destinos" onClick={() => setOpen(false)}>Destinos</Link>
-        <Link to="/servicios" onClick={() => setOpen(false)}>Servicios</Link>
-        <Link to="/contacto" onClick={() => setOpen(false)}>Contacto</Link>
+      <div className="center">
+        <Link to="/">Inicio</Link>
+        <Link to="/destinos">Destinos</Link>
+        <Link to="/servicios">Servicios</Link>
+        <Link to="/contacto">Contacto</Link>
       </div>
 
       <div className="right">
         <button onClick={handleReserveClick} className="btn-blue">
           Reservar Ahora
         </button>
-
         <Link to="/login" className="btn-yellow">
           Iniciar Sesión
         </Link>

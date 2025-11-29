@@ -1,163 +1,162 @@
 .reserva-layout {
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  width: 100%;
-  min-height: 100vh;
-  background: #faf5ec;
-  padding: 30px 40px;
-  gap: 40px;
-  box-sizing: border-box;
+  padding: 25px;
+  gap: 5%;
 }
 
 .reserva-card {
   width: 55%;
-  background: #ffffff;
-  padding: 35px;
+  background: white;
+  padding: 25px;
   border-radius: 18px;
-  border: 1px solid #e2d6c7;
-  box-shadow: 0 6px 16px rgba(110, 90, 60, 0.12);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .reserva-title {
-  font-size: 28px;
+  font-size: 22px;
   font-weight: 700;
-  margin-bottom: 25px;
-  color: #4a3f35;
-}
-
-.reserva-input,
-.reserva-select,
-.reserva-textarea,
-.auto-container input {
-  width: 100%;
-  padding: 12px;
-  border-radius: 12px;
-  border: 1px solid #d5c8b5;
-  background: #f8f3ea;
-  font-size: 15px;
-  margin-top: 6px;
-  transition: 0.25s ease;
-}
-
-.reserva-input:focus,
-.reserva-select:focus,
-.reserva-textarea:focus,
-.auto-container input:focus {
-  border-color: #c9a86a;
-  background: #fffdf8;
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(201, 168, 106, 0.25);
+  margin-bottom: 10px;
 }
 
 .reserva-label {
-  margin-top: 18px;
+  margin-top: 5px;
   font-weight: 600;
-  color: #5a4e43;
+  font-size: 14px;
+}
+
+.reserva-input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 15px;
 }
 
 .reserva-textarea {
-  min-height: 120px;
-  resize: vertical;
-}
-
-.btn-crear,
-.btn-factura {
   width: 100%;
-  padding: 14px;
+  padding: 10px;
   border-radius: 12px;
-  border: none;
-  font-size: 16px;
-  font-weight: 700;
-  margin-top: 18px;
-  cursor: pointer;
-  transition: 0.25s ease;
+  border: 1px solid #ccc;
+  min-height: 90px;
+  font-size: 15px;
 }
 
 .btn-crear {
-  background: #4c84f4;
+  width: 100%;
+  background: #138fcf;
   color: white;
-}
-
-.btn-crear:hover {
-  background: #3a6ddd;
+  padding: 12px;
+  border-radius: 14px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 .btn-factura {
-  background: #129943;
+  width: 100%;
+  background: #e7b93d;
   color: white;
-}
-
-.btn-factura:hover {
-  background: #0f7d38;
+  padding: 12px;
+  border-radius: 14px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 .id-box {
-  margin-top: 18px;
-  padding: 14px;
-  background: #fff4d4;
-  border: 1px solid #e8c88f;
-  border-radius: 12px;
-  text-align: center;
-  font-size: 16px;
-  font-weight: 600;
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: #f5f5f5;
+  border-radius: 10px;
+  font-size: 14px;
 }
 
 .contenedor-derecho {
   width: 40%;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 20px;
 }
 
 .resumen-card {
-  padding: 25px;
-  border-radius: 20px;
-  border: 1px solid #e2d6c7;
-  background: #ffffff;
-  box-shadow: 0 6px 16px rgba(110, 90, 60, 0.12);
+  background: white;
+  padding: 20px;
+  border-radius: 18px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
 }
 
 .resumen-title {
-  font-size: 21px;
-  font-weight: 700;
+  font-size: 20px;
   margin-bottom: 15px;
-  color: #4a3f35;
 }
 
 .resumen-row {
   display: flex;
   justify-content: space-between;
-  padding: 12px 0;
-  border-bottom: 1px solid #efe5d7;
+  margin-bottom: 10px;
   font-size: 15px;
-  color: #4a3f35;
 }
 
 .factura-box {
-  padding: 25px;
-  border-radius: 20px;
-  border: 1px solid #e2d6c7;
-  background: #ffffff;
-  box-shadow: 0 6px 16px rgba(110, 90, 60, 0.12);
+  background: white;
+  padding: 20px;
+  border-radius: 18px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  font-size: 15px;
 }
 
 .factura-box h2 {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 10px;
-  color: #4a3f35;
+  margin-bottom: 12px;
+  font-size: 20px;
 }
 
 .factura-box h3 {
-  font-size: 18px;
-  font-weight: 700;
-  margin-top: 20px;
-  margin-bottom: 6px;
-  color: #5a4e43;
+  margin-top: 10px;
+  font-size: 17px;
 }
 
 .factura-box p {
-  margin: 4px 0;
-  font-size: 15px;
-  color: #4f4338;
+  margin: 5px 0;
+}
+
+/* ============================================
+   RESPONSIVE
+============================================ */
+
+@media (max-width: 1200px) {
+  .reserva-layout {
+    gap: 3%;
+  }
+}
+
+@media (max-width: 992px) {
+  .reserva-layout {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .reserva-card {
+    width: 100%;
+  }
+
+  .contenedor-derecho {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .reserva-card,
+  .contenedor-derecho {
+    padding: 18px;
+  }
+
+  .factura-box,
+  .resumen-card {
+    padding: 18px;
+  }
 }

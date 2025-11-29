@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Dashboard.css";
 
-// ICONOS
 import {
   Users,
   ClipboardList,
@@ -11,7 +10,7 @@ import {
 } from "lucide-react";
 
 export default function Dashboard() {
-  // API
+
   const API_RESERVAS =
     "https://reserva-turistica.onrender.com/api/Reservas/vista-reservas-listado";
 
@@ -27,7 +26,6 @@ export default function Dashboard() {
 
   const [mostrarTodas, setMostrarTodas] = useState(false);
 
-  // Resumen del dashboard
   const [resumen, setResumen] = useState({
     totalClientes: 0,
     totalReservaciones: 0,
@@ -37,7 +35,6 @@ export default function Dashboard() {
     mesActual: "",
   });
 
-  // ===================== CARGAR RESERVAS =====================
   useEffect(() => {
     fetch(API_RESERVAS)
       .then((res) => res.json())
@@ -48,7 +45,6 @@ export default function Dashboard() {
       .catch((err) => console.log("ERROR API RESERVAS:", err));
   }, []);
 
-  // ===================== CARGAR RESUMEN =====================
   useEffect(() => {
     fetch(API_RESUMEN)
       .then((res) => res.json())
@@ -86,7 +82,6 @@ export default function Dashboard() {
     setFiltered(results);
   };
 
-  // ===================== FILTRAR =====================
   const filtrarEstado = (value) => {
     setEstadoFilter(value);
 
@@ -99,14 +94,11 @@ export default function Dashboard() {
     setFiltered(results);
   };
 
-  // ===================== ORDENAR ÚLTIMAS RESERVAS =====================
   const ultimasReservas = [...filtered]
     .sort((a, b) => new Date(b.fecha_Creacion) - new Date(a.fecha_Creacion))
     .slice(0, 10);
 
   const listaFinal = mostrarTodas ? filtered : ultimasReservas;
-
-  // ===================== IMÁGENES CLOUDINARY =====================
   const destinos = [
     {
       img: "https://res.cloudinary.com/dlrmisofc/image/upload/v1764021865/italia_qn6qv6.jpg",
