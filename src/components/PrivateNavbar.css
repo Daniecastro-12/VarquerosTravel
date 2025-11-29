@@ -1,50 +1,76 @@
 .private-nav {
-  height: 70px;
+  height: 75px;
   width: 100%;
-  background: white;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
+  background: #ffffff;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 30px;
+  padding: 0 35px;
   font-family: "Inter", sans-serif;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 150;
 }
 
-/* Título del navbar */
-.nav-left .nav-title {
+/* Lado Izquierdo */
+.nav-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-title {
   margin: 0;
   font-size: 20px;
-  color: #1d3557;
   font-weight: 700;
+  color: #1d3557;
 }
 
-.nav-left .nav-subtitle {
-  margin: 0;
+.nav-subtitle {
   font-size: 13px;
-  color: #6c7a89;
   font-weight: 500;
+  color: #6c7a89;
+  margin-top: -2px;
 }
 
-/* Usuario */
+/* Lado derecho completo */
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 18px;
+  position: relative; /* para posicionar el menú flotante */
 }
 
+/* Usuario completo como bloque */
+.user-block {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 12px;
+  transition: 0.2s ease;
+}
+
+.user-block:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+/* Avatar */
 .avatar {
-  width: 42px;
-  height: 42px;
+  width: 45px;
+  height: 45px;
   background: #1d3557;
   color: white;
-  font-weight: bold;
+  font-weight: 700;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+/* Usuario */
 .user-name {
   margin: 0;
   font-size: 14px;
@@ -55,6 +81,75 @@
 .user-role {
   margin: 0;
   font-size: 12px;
-  font-weight: 400;
   color: #6c7a89;
+  margin-top: -3px;
+}
+
+/* Ícono de los tres puntitos */
+.menu-dots {
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 12px;
+  transition: 0.2s ease;
+}
+
+.menu-dots:hover {
+  background: rgba(0,0,0,0.08);
+}
+
+/* MENÚ FLOTANTE */
+.user-menu {
+  position: absolute;
+  top: 68px;
+  right: 0;
+  width: 230px;
+  background: #fff;
+  border-radius: 14px;
+  padding: 15px 18px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  z-index: 200;
+  animation: fadeInMenu 0.15s ease-out;
+}
+
+@keyframes fadeInMenu {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.menu-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #344767;
+  margin: 0;
+}
+
+.menu-role {
+  display: block;
+  font-size: 13px;
+  color: #6c7a89;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ececec;
+  padding-bottom: 10px;
+}
+
+.menu-item {
+  padding: 10px;
+  background: #f7f7f7;
+  border-radius: 8px;
+  margin-top: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.1s ease-in-out;
+}
+
+.menu-item:hover {
+  background: #eaeaea;
+}
+
+.logout {
+  background: #ffe5e5 !important;
+  color: red;
+  font-weight: 600;
 }

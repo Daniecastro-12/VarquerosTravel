@@ -1,19 +1,21 @@
-/* ===========================
+/* ===========================================================
    CONTENEDOR GENERAL
-=========================== */
+=========================================================== */
 .reservas-container {
   padding: 25px 40px;
-  background: #f8f8f8;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #faf6ee 0%, #ffffff 100%);
+  font-family: "Inter", sans-serif;
 }
 
-/* ===========================
+/* ===========================================================
    HEADER
-=========================== */
+=========================================================== */
 .reservas-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .reservas-title {
@@ -22,107 +24,198 @@
   color: #43516e;
 }
 
+/* NUEVA RESERVA */
 .btn-new-reserva {
   background: #d4a657;
   color: white;
-  padding: 10px 16px;
-  border-radius: 10px;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-size: 14px;
   font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 8px;
   border: none;
+  display: flex;
+  gap: 8px;
+  align-items: center;
   cursor: pointer;
+  transition: 0.25s ease;
 }
 
 .btn-new-reserva:hover {
   background: #b88c45;
+  box-shadow: 0px 4px 12px rgba(212, 166, 87, 0.4);
 }
 
-/* ===========================
-   TABLA
-=========================== */
+/* ===========================================================
+   CONTENEDOR TABLA
+=========================================================== */
 .reservas-table-container {
-  padding: 20px;
-  background: white;
-  border-radius: 14px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  background: #ffffff;
+  padding: 22px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
   width: 100%;
-  overflow: hidden;
 }
 
-.reservas-table {
+/* ===========================================================
+   TOOLBAR (BUSCADOR + FILTRO)
+=========================================================== */
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.search-box {
+  position: relative;
+  width: 300px;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  color: #9b9b9b;
+}
+
+.input-search {
+  width: 100%;
+  padding: 10px 14px 10px 38px;
+  background: #faf6ee;
+  border: 1px solid #d4cfc0;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #333;
+  transition: 0.2s ease;
+}
+
+.input-search:focus {
+  background: white;
+  border-color: #4c84f4;
+  box-shadow: 0 0 0 3px rgba(76, 132, 244, 0.22);
+}
+
+/* FILTRO SELECT */
+.input-filter {
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: #faf6ee;
+  border: 1px solid #d4cfc0;
+  color: #444;
+  cursor: pointer;
+  font-size: 14px;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg fill='%23696969' height='18' viewBox='0 0 24 24' width='18' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+
+.input-filter:focus {
+  border-color: #4c84f4;
+  box-shadow: 0 0 0 3px rgba(76, 132, 244, 0.22);
+}
+
+/* ===========================================================
+   TABLA ESTILO PREMIUM
+=========================================================== */
+.pro-table {
   width: 100%;
   border-collapse: collapse;
 }
 
-.reservas-table th {
-  background: #f0f0f0;
+.pro-table th {
+  background: #f3f3f3;
   padding: 14px;
   text-align: center;
   font-weight: 600;
-  color: #53627c;
+  color: #43516e;
+  font-size: 14px;
 }
 
-.reservas-table td {
+.pro-table td {
   padding: 12px;
-  border-bottom: 1px solid #eee;
   text-align: center;
+  border-bottom: 1px solid #eeeeee;
+  color: #444;
+  font-size: 14px;
 }
 
-/* Hover suave */
-.reservas-table tr:hover td {
+.pro-table tr:hover td {
   background: #fafafa;
 }
 
-/* ===========================
-   INPUTS DE EDICIÓN
-=========================== */
+/* ===========================================================
+   SELECT EDICIÓN PREMIUM
+=========================================================== */
+.edit-select {
+  width: 140px;
+  padding: 9px 14px;
+  border-radius: 10px;
+  background: #faf6ee;
+  border: 1px solid #d4cfc0;
+  color: #444;
+  font-size: 14px;
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg fill='%23696969' height='18' viewBox='0 0 24 24' width='18' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+
+.edit-select:focus {
+  border-color: #4c84f4;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(76, 132, 244, 0.22);
+}
+
+/* ===========================================================
+   INPUT NUMBER PREMIUM
+=========================================================== */
 .edit-input {
-  padding: 8px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  width: 110px;
+  width: 120px;
+  padding: 9px 10px;
+  border-radius: 10px;
+  border: 1px solid #d4cfc0;
+  background: #fafafa;
+  font-size: 14px;
   text-align: center;
+  color: #333;
+  transition: 0.2s ease;
 }
 
-/* Inputs blancos */
-.white-input {
-  background: white !important;
-  color: black !important;
+.edit-input:focus {
+  background: white;
+  border-color: #4c84f4;
+  box-shadow: 0 0 0 3px rgba(76, 132, 244, 0.22);
 }
 
-/* ===========================
-   QUITAR COLOR NEGRO A FLECHAS
-=========================== */
+/* QUITAR FONDO FEO DE LAS FLECHAS NUMBER */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
-  filter: invert(1);
-  opacity: 0.6;
+  opacity: 0.35;
+  background: transparent !important;
 }
 
-input[type="number"]:hover::-webkit-inner-spin-button,
-input[type="number"]:hover::-webkit-outer-spin-button {
-  opacity: 1;
+input[type="number"]:hover::-webkit-inner-spin-button {
+  opacity: 0.7;
 }
 
-/* ===========================
-   BOTONES DE ACCIONES
-=========================== */
+/* ===========================================================
+   BOTONES ACCIONES
+=========================================================== */
 .action-buttons {
   display: flex;
-  justify-content: center;
-  align-items: center;
   gap: 10px;
+  justify-content: center;
 }
 
-/* ICONOS */
 .action-btn {
-  padding: 7px;
-  border-radius: 10px;
+  padding: 8px;
+  border-radius: 12px;
   border: none;
   cursor: pointer;
-  transition: 0.15s ease;
+  transition: 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -130,40 +223,70 @@ input[type="number"]:hover::-webkit-outer-spin-button {
 
 /* EDITAR */
 .btn-edit {
-  background: #e1edff;
+  background: #e5f0ff;
   color: #1d4ed8;
 }
-
 .btn-edit:hover {
-  background: #cddffc;
+  background: #d3e5ff;
 }
 
 /* GUARDAR */
 .btn-save {
-  background: #d4f8d4;
+  background: #d4f7d4;
   color: #2f7a2f;
 }
-
 .btn-save:hover {
-  background: #c0efc0;
+  background: #c5efc5;
 }
 
 /* CANCELAR */
 .btn-cancel {
   background: #f0f0f0;
-  color: #444;
+  color: #555;
 }
-
 .btn-cancel:hover {
-  background: #e3e3e3;
+  background: #e0e0e0;
 }
 
 /* ELIMINAR */
 .btn-delete {
-  background: #ffd9d9;
-  color: #c81e1e;
+  background: #ffe1e1;
+  color: #d03434;
+}
+.btn-delete:hover {
+  background: #ffd0d0;
 }
 
-.btn-delete:hover {
-  background: #ffbcbc;
+/* ===========================================================
+   SIN DATOS
+=========================================================== */
+.no-data {
+  padding: 20px;
+  text-align: center;
+  color: #777;
+  font-size: 15px;
+}
+
+/* ===========================================================
+   DETALLES DE RESERVA (Alineado a la derecha)
+=========================================================== */
+.btn-details-container {
+  text-align: right;  /* Alinea el botón "Ver Detalles" a la derecha */
+}
+
+.details-container {
+  margin-top: 20px;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.details-container button {
+  background-color: #d4a657;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
 }

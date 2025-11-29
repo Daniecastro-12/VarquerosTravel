@@ -1,0 +1,131 @@
+
+.clientes-page {
+  width: 100%;
+  padding: 30px;
+  background: #efe1cc; 
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+}
+
+
+.clientes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.clientes-title {
+  font-size: 26px;
+  font-weight: 600;
+  color: #d1a982;
+}
+
+
+.btn-nuevo {
+  padding: 10px 22px;
+  background: #4370d1;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.btn-nuevo:hover {
+  background: #6d90e6;
+}
+
+.clientes-search-wrapper input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #e3d5c3;
+  background: #faf4eb;
+  font-size: 14px;
+  margin-bottom: 20px;
+  transition: .2s;
+}
+
+.clientes-search-wrapper input:focus {
+  background: #fffdf7;
+  border-color: #c8b7a4;
+  box-shadow: 0 0 0 3px rgba(225, 206, 184, 0.4);
+}
+
+.clientes-table-container {
+  background: #fdfaf5;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #e5d7c7;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.clientes-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.clientes-table th {
+  background: #f3ebdf;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #d4b99c;
+  border-bottom: 2px solid #e6d8c9;
+}
+
+.clientes-table td {
+  padding: 12px;
+  border-bottom: 1px solid #f0e6d8;
+  color: #c0a78c;
+  font-size: 14px;
+}
+
+.clientes-table tr:hover td {
+  background: #f5eee6;
+}
+
+
+.acciones {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-editar {
+  padding: 6px 14px;
+  background: #7fa8ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-editar:hover {
+  background: #6d90e6;
+}
+
+.btn-eliminar {
+  padding: 6px 14px;
+  background: #ff9b9b;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-eliminar:hover {
+  background: #bc3636;
+}
+
+.sin-clientes {
+  text-align: center;
+  padding: 20px;
+  color: #99836c;
+  background: #fff7ea;
+  border-radius: 12px;
+  font-weight: 600;
+}

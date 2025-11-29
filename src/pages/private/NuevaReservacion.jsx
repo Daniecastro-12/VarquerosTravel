@@ -1,389 +1,301 @@
 import React, { useState, useEffect } from "react";
 import "./NuevaReservacion.css";
+import AutoInput from "../../components/AutoInput";
 
 export default function NuevaReservacion() {
-  const API_CLIENTES = "https://reserva-turistica.onrender.com/api/Clientes";
+  // ENDPOINTS
+  const API_CLIENTES = "https://reserva-turistica.onrender.com/api/Reservas/vista-clientes";
   const API_SERVICIOS = "https://reserva-turistica.onrender.com/api/Servicios";
   const API_HOTELES = "https://reserva-turistica.onrender.com/api/Hotels";
   const API_TOURS = "https://reserva-turistica.onrender.com/api/Tours";
   const API_PAQUETES = "https://reserva-turistica.onrender.com/api/PaqueteTours";
+  const API_CREAR = "https://reserva-turistica.onrender.com/api/Reservas/crear-reservacion";
 
-  const API_RESERVAS = "https://reserva-turistica.onrender.com/api/Reservas";
-  const API_RESERVA_SERVICIOS = "https://reserva-turistica.onrender.com/api/ReservaServicios";
-  const API_RESERVA_TOURS = "https://reserva-turistica.onrender.com/api/ReservaTours";
+  const API_FACTURAR = "https://reserva-turistica.onrender.com/api/Facturas/generar";
+  const API_FACTURA_COMPLETA = "https://reserva-turistica.onrender.com/api/Facturas/obtener-completa/";
 
+  // ESTADOS
   const [clientes, setClientes] = useState([]);
   const [servicios, setServicios] = useState([]);
-  const [hoteles, setHoteles] = useState([]);
   const [tours, setTours] = useState([]);
   const [paquetes, setPaquetes] = useState([]);
+  const [hoteles, setHoteles] = useState([]);
+
+  const [reservaId, setReservaId] = useState(null);
+  const [factura, setFactura] = useState(null);
 
   const [form, setForm] = useState({
     clienteId: "",
+    monedaId: 1,
+    metodoPagoId: 1,
     servicioId: "",
-    precioServicio: 0,
-
     tourId: "",
-    precioTour: 0,
-
     hotelId: "",
-    precioHotel: 0,
-
     paqueteId: "",
-    precioPaquete: 0,
-
     fecha: "",
-    notas: "",
+    total: "",
+    observacion: ""
   });
 
+  // CARGAR DATOS
   useEffect(() => {
     async function load() {
       try {
-        setClientes(await (await fetch(API_CLIENTES)).json());
+        const cli = await (await fetch(API_CLIENTES)).json();
+        setClientes(
+          cli.map(c => ({
+            id: c.clienteID,
+            codigo: c.codigoCliente,
+            nombre: c.nombreCompleto
+          }))
+        );
+
         setServicios(await (await fetch(API_SERVICIOS)).json());
         setHoteles(await (await fetch(API_HOTELES)).json());
         setTours(await (await fetch(API_TOURS)).json());
         setPaquetes(await (await fetch(API_PAQUETES)).json());
-      } catch {
-        alert("Error cargando datos.");
+      } catch (err) {
+        console.log("Error cargando datos:", err);
       }
     }
     load();
   }, []);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
-  };
+  const handleChange = e => setForm({ ...form, [e.target.name]: e.target.value });
 
-  // CÁLCULOS
-  const subtotal =
-    Number(form.precioServicio) +
-    Number(form.precioTour) +
-    Number(form.precioHotel) +
-    Number(form.precioPaquete);
-
-  const impuesto = subtotal * 0.1;
-  const total = subtotal + impuesto;
-
-  // --------------------------------------------------------
-  //  GUARDAR RESERVA Y DETALLES
-  // --------------------------------------------------------
+  // ===========================
+  // CREAR RESERVA
+  // ===========================
   const crearReserva = async () => {
-    if (!form.clienteId || !form.fecha) {
-      alert("Seleccione cliente y fecha.");
+    if (!form.clienteId || !form.fecha || !form.total) {
+      alert("Debe llenar cliente, fecha y total.");
       return;
     }
 
-    // -----------------------------------
-    // 1) GUARDAR RESERVA PRINCIPAL
-    // -----------------------------------
-    const nuevaReserva = {
-      codigoReserva: Math.floor(Math.random() * 9000) + 1000,
-      estado: "A",
-      total,
-      clienteId: Number(form.clienteId),
-      servicioId: null,
-      tourId: null,
-      hotelId: null,
-      paqueteId: null,
-      fecha: form.fecha,
-      notas: form.notas,
+    const payload = {
+      clienteID: Number(form.clienteId),
+      servicioID: Number(form.servicioId) || 0,
+      tourID: Number(form.tourId) || 0,
+      hotelID: Number(form.hotelId) || 0,
+      paqueteID: Number(form.paqueteId) || 0,
+      fechaReserva: form.fecha,
+      pnTotal: Number(form.total)
     };
 
-    let reservaId = null;
-
     try {
-      const resp = await fetch(API_RESERVAS, {
+      const resp = await fetch(API_CREAR, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(nuevaReserva),
+        body: JSON.stringify(payload)
+      });
+
+      const data = await resp.json();
+      console.log("Reserva creada:", data);
+
+      if (data.reservaID) {
+        setReservaId(data.reservaID);
+        setFactura(null);
+      } else {
+        alert("Error creando la reserva");
+      }
+    } catch (err) {
+      console.log("Error creando reserva:", err);
+    }
+  };
+
+  // ===========================
+  // GENERAR FACTURA
+  // ===========================
+  const generarFactura = async () => {
+    if (!reservaId) {
+      alert("Debe crear la reserva primero");
+      return;
+    }
+
+    try {
+      const resp = await fetch(API_FACTURAR, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          reservaID: reservaId,
+          monedaID: Number(form.monedaId)
+        })
       });
 
       if (!resp.ok) {
-        alert("Error guardando la reserva.");
+        alert("Error creando la factura");
         return;
       }
 
-      const data = await resp.json();
-      reservaId = data.id;
-    } catch {
-      alert("Error con el servidor.");
-      return;
+      // Obtener factura completa
+      const facturaResp = await fetch(API_FACTURA_COMPLETA + reservaId);
+      const facturaData = await facturaResp.json();
+
+      console.log("Factura completa:", facturaData);
+
+      setFactura(facturaData);
+
+      alert("Factura creada con éxito");
+
+    } catch (err) {
+      console.log("Error generando factura:", err);
     }
-
-    // -----------------------------------
-    // 2) GUARDAR SERVICIOS
-    // -----------------------------------
-    async function guardarServicio(servicioId, precio) {
-      if (!servicioId || precio <= 0) return;
-
-      const body = {
-        servicioId: Number(servicioId),
-        reservaId: reservaId,
-        fechaInicio: form.fecha,
-        fechaFin: form.fecha,
-        precioUnidad: Number(precio),
-        subtotal: Number(precio),
-        total: Number(precio),
-      };
-
-      await fetch(API_RESERVA_SERVICIOS, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      });
-    }
-
-    await guardarServicio(form.servicioId, form.precioServicio);
-    await guardarServicio(form.hotelId, form.precioHotel);
-    await guardarServicio(form.paqueteId, form.precioPaquete);
-
-    // -----------------------------------
-    // 3) GUARDAR TOUR
-    // -----------------------------------
-    if (form.tourId && form.precioTour > 0) {
-      const bodyTour = {
-        reservaId,
-        tourId: Number(form.tourId),
-        cantidad: 1,
-        subtotal: Number(form.precioTour),
-        total: Number(form.precioTour),
-      };
-
-      await fetch(API_RESERVA_TOURS, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(bodyTour),
-      });
-    }
-
-    alert("Reserva creada correctamente ✔");
-    window.location.href = "/reservaciones";
   };
+
+  // DATOS para vista previa
+  const clienteSel = clientes.find(c => c.id == form.clienteId);
+  const nombreCliente = clienteSel?.nombre || "—";
+
+  const nombreServicio = servicios.find(x => x.id == form.servicioId)?.nombre || "—";
+  const nombreTour = tours.find(x => x.id == form.tourId)?.nombre || "—";
+  const nombreHotel = hoteles.find(x => x.id == form.hotelId)?.nombre || "—";
+  const nombrePaquete = paquetes.find(x => x.paqueteId == form.paqueteId)?.nombre || "—";
+
+  // FALLBACK cuando el backend NO devuelve datos
+  const fc = factura || {};
+
+  const facturaCliente = fc.clienteNombreCompleto || nombreCliente;
+  const facturaDNI = fc.dni || "—";
+  const facturaCorreo = fc.correo_electronico || "—";
+  const facturaDireccion = fc.direccion || "—";
+
+  const facturaServicio = fc.servicios?.[0]?.servicio || nombreServicio;
+  const facturaTour = fc.tours?.[0]?.tour || nombreTour;
+  const facturaHotel = fc.hoteles?.[0]?.hotel || nombreHotel;
+  const facturaPaquete = fc.paquetes?.[0]?.paquete || nombrePaquete;
+
+  const facturaTotal = fc.totalFactura || form.total;
 
   return (
     <div className="reserva-layout">
-      {/* FORM */}
+
+      {/* FORMULARIO IZQUIERDA */}
       <div className="reserva-card">
         <h2 className="reserva-title">Crear Nueva Reservación</h2>
 
-        {/* CLIENTE */}
-        <label className="reserva-label">Cliente</label>
-        <select
-          name="clienteId"
+        <AutoInput
+          label="Cliente"
+          items={clientes}
+          keyField="id"
+          textField="codigo"
+          extraField="nombre"
           value={form.clienteId}
-          onChange={handleChange}
-          className="reserva-input"
-        >
-          <option value="">Seleccione un cliente</option>
-          {clientes.map((c) => (
-            <option key={c.id} value={c.id}>
-              Cliente #{c.codigoCliente}
-            </option>
-          ))}
+          onChange={v => setForm({ ...form, clienteId: v })}
+        />
+
+        <label className="reserva-label">Moneda</label>
+        <select name="monedaId" value={form.monedaId} onChange={handleChange} className="reserva-input">
+          <option value="1">Lempiras</option>
+          <option value="2">USD</option>
         </select>
 
-        {/* SERVICIO */}
-        <div className="row-two">
-          <div>
-            <label className="reserva-label">Servicio</label>
-            <select
-              name="servicioId"
-              value={form.servicioId}
-              onChange={handleChange}
-              className="reserva-input"
-            >
-              <option value="">Seleccione un servicio</option>
-              {servicios.map((s) => (
-                <option key={s.id} value={s.id}>
-                  {s.nombre}
-                </option>
-              ))}
-            </select>
-          </div>
+        <label className="reserva-label">Método de Pago</label>
+        <select name="metodoPagoId" value={form.metodoPagoId} onChange={handleChange} className="reserva-input">
+          <option value="1">Efectivo</option>
+          <option value="2">Tarjeta</option>
+          <option value="3">Transferencia</option>
+        </select>
 
-          <div>
-            <label className="reserva-label">Precio</label>
-            <input
-              type="number"
-              name="precioServicio"
-              value={form.precioServicio}
-              onChange={handleChange}
-              className="reserva-input"
-            />
-          </div>
-        </div>
+        <label className="reserva-label">Fecha</label>
+        <input type="date" name="fecha" value={form.fecha}
+          onChange={handleChange} className="reserva-input" />
 
-        {/* TOUR */}
-        <div className="row-two">
-          <div>
-            <label className="reserva-label">Tour</label>
-            <select
-              name="tourId"
-              value={form.tourId}
-              onChange={handleChange}
-              className="reserva-input"
-            >
-              <option value="">Seleccione un tour</option>
-              {tours.map((t) => (
-                <option key={t.id} value={t.id}>
-                  {t.nombre}
-                </option>
-              ))}
-            </select>
-          </div>
+        <AutoInput label="Servicio" items={servicios} keyField="id"
+          textField="nombre" value={form.servicioId}
+          onChange={v => setForm({ ...form, servicioId: v })} />
 
-          <div>
-            <label className="reserva-label">Precio</label>
-            <input
-              name="precioTour"
-              type="number"
-              value={form.precioTour}
-              onChange={handleChange}
-              className="reserva-input"
-            />
-          </div>
-        </div>
+        <AutoInput label="Tour" items={tours} keyField="id"
+          textField="nombre" value={form.tourId}
+          onChange={v => setForm({ ...form, tourId: v })} />
 
-        {/* HOTEL */}
-        <div className="row-two">
-          <div>
-            <label className="reserva-label">Hotel</label>
-            <select
-              name="hotelId"
-              value={form.hotelId}
-              onChange={handleChange}
-              className="reserva-input"
-            >
-              <option value="">Seleccione un hotel</option>
-              {hoteles.map((h) => (
-                <option key={h.id} value={h.id}>
-                  {h.nombre}
-                </option>
-              ))}
-            </select>
-          </div>
+        <AutoInput label="Hotel" items={hoteles} keyField="id"
+          textField="nombre" value={form.hotelId}
+          onChange={v => setForm({ ...form, hotelId: v })} />
 
-          <div>
-            <label className="reserva-label">Precio</label>
-            <input
-              name="precioHotel"
-              type="number"
-              value={form.precioHotel}
-              onChange={handleChange}
-              className="reserva-input"
-            />
-          </div>
-        </div>
+        <AutoInput label="Paquete" items={paquetes} keyField="paqueteId"
+          textField="nombre" value={form.paqueteId}
+          onChange={v => setForm({ ...form, paqueteId: v })} />
 
-        {/* PAQUETE */}
-        <div className="row-two">
-          <div>
-            <label className="reserva-label">Paquete</label>
-            <select
-              name="paqueteId"
-              value={form.paqueteId}
-              onChange={handleChange}
-              className="reserva-input"
-            >
-              <option value="">Seleccione un paquete</option>
-              {paquetes.map((p) => (
-                <option key={p.paqueteId} value={p.paqueteId}>
-                  {p.nombre}
-                </option>
-              ))}
-            </select>
-          </div>
+        <label className="reserva-label">Total</label>
+        <input type="number" name="total" value={form.total}
+          onChange={handleChange} className="reserva-input" />
 
-          <div>
-            <label className="reserva-label">Precio</label>
-            <input
-              name="precioPaquete"
-              type="number"
-              value={form.precioPaquete}
-              onChange={handleChange}
-              className="reserva-input"
-            />
-          </div>
-        </div>
-
-        {/* FECHA */}
-        <label className="reserva-label">Fecha de la reservación</label>
-        <input
-          type="date"
-          name="fecha"
-          value={form.fecha}
-          onChange={handleChange}
-          className="reserva-input fecha-input"
-        />
-
-        {/* NOTAS */}
-        <label className="reserva-label">Notas adicionales</label>
-        <textarea
-          name="notas"
-          value={form.notas}
-          onChange={handleChange}
-          className="reserva-textarea"
-        />
-      </div>
-
-      {/* RESUMEN */}
-      <div className="resumen-card">
-        <h3 className="resumen-title">Resumen de la Reservación</h3>
-
-        <div className="resumen-row">
-          <span>Cliente</span>
-          <strong>
-            {form.clienteId
-              ? "Cliente #" +
-                clientes.find((c) => c.id == form.clienteId)?.codigoCliente
-              : "No seleccionado"}
-          </strong>
-        </div>
-
-        <div className="resumen-row">
-          <span>Servicio</span>
-          <strong>L. {form.precioServicio || 0}</strong>
-        </div>
-
-        <div className="resumen-row">
-          <span>Tour</span>
-          <strong>L. {form.precioTour || 0}</strong>
-        </div>
-
-        <div className="resumen-row">
-          <span>Hotel</span>
-          <strong>L. {form.precioHotel || 0}</strong>
-        </div>
-
-        <div className="resumen-row">
-          <span>Paquete</span>
-          <strong>L. {form.precioPaquete || 0}</strong>
-        </div>
-
-        <div className="resumen-row">
-          <span>Subtotal</span>
-          <strong>L. {subtotal.toFixed(2)}</strong>
-        </div>
-
-        <div className="resumen-row">
-          <span>Impuesto 10%</span>
-          <strong>L. {impuesto.toFixed(2)}</strong>
-        </div>
-
-        <div className="resumen-total">
-          <span>Total a pagar</span>
-          <strong>L. {total.toFixed(2)}</strong>
-        </div>
+        <label className="reserva-label">Observación</label>
+        <textarea name="observacion"
+          value={form.observacion} onChange={handleChange}
+          className="reserva-textarea"></textarea>
 
         <button className="btn-crear" onClick={crearReserva}>
           Crear Reservación
         </button>
 
-        <button className="btn-cancelar" onClick={() => window.history.back()}>
-          Cancelar
+        {reservaId && (
+          <div className="id-box">ID de Reserva: <strong>{reservaId}</strong></div>
+        )}
+
+        <button className="btn-factura" onClick={generarFactura}>
+          Generar Factura
         </button>
+      </div>
+
+      {/* RESUMEN + FACTURA */}
+      <div className="contenedor-derecho">
+
+        {/* RESUMEN */}
+        <div className="resumen-card">
+          <h3 className="resumen-title">Resumen</h3>
+
+          <div className="resumen-row"><span>Cliente</span><strong>{nombreCliente}</strong></div>
+          <div className="resumen-row"><span>Servicio</span><strong>{nombreServicio}</strong></div>
+          <div className="resumen-row"><span>Tour</span><strong>{nombreTour}</strong></div>
+          <div className="resumen-row"><span>Hotel</span><strong>{nombreHotel}</strong></div>
+          <div className="resumen-row"><span>Paquete</span><strong>{nombrePaquete}</strong></div>
+          <div className="resumen-row"><span>Total</span><strong>L. {form.total}</strong></div>
+        </div>
+
+        {/* FACTURA */}
+        <div className="factura-box">
+          <h2>Factura (Vista previa)</h2>
+
+          {!factura ? (
+            <>
+              <p><strong>Cliente:</strong> {facturaCliente}</p>
+              <p><strong>Servicio:</strong> {facturaServicio}</p>
+              <p><strong>Tour:</strong> {facturaTour}</p>
+              <p><strong>Hotel:</strong> {facturaHotel}</p>
+              <p><strong>Paquete:</strong> {facturaPaquete}</p>
+              <p><strong>Total estimado:</strong> L. {facturaTotal}</p>
+
+              <small>Genera la factura para guardar los datos reales.</small>
+            </>
+          ) : (
+            <>
+              <h3>Factura #{factura.facturaID}</h3>
+
+              <p><strong>Estado:</strong> {fc.estadoFactura || "Activa"}</p>
+              <p><strong>Fecha emisión:</strong> {fc.fecha_Emision || "—"}</p>
+
+              <p><strong>Cliente:</strong> {facturaCliente}</p>
+              <p><strong>DNI:</strong> {facturaDNI}</p>
+              <p><strong>Correo:</strong> {facturaCorreo}</p>
+              <p><strong>Dirección:</strong> {facturaDireccion}</p>
+
+              <h3>Servicios</h3>
+              <p>{facturaServicio}</p>
+
+              <h3>Tours</h3>
+              <p>{facturaTour}</p>
+
+              <h3>Hotel</h3>
+              <p>{facturaHotel}</p>
+
+              <h3>Paquete</h3>
+              <p>{facturaPaquete}</p>
+
+              <h2>Total Factura: L. {facturaTotal}</h2>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );

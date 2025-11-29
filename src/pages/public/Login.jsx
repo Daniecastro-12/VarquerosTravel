@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
@@ -18,22 +18,128 @@ const logo =
 export default function Login() {
   const navigate = useNavigate();
 
-  // Campos del formulario
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  // Manejar Login
-  const handleLogin = () => {
+  const API_LOGIN = "https://reserva-turistica.onrender.com/api/Auth/login";
+  const API_GOOGLE = "https://reserva-turistica.onrender.com/api/Auth/login-google";
+
+  // ---------------------------------------------------
+  // LOGIN NORMAL
+  // ---------------------------------------------------
+  const handleLogin = async () => {
     if (email.trim() === "" || pass.trim() === "") {
       alert("Por favor completa todos los campos.");
       return;
     }
 
-    // Guardar sesión
-    localStorage.setItem("loggedIn", "true");
+    try {
+      setLoading(true);
 
-    // Redirigir a Dashboard
-    navigate("/dashboard");
+      const response = await fetch(API_LOGIN, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          accept: "*/*",
+        },
+        body: JSON.stringify({
+          correo: email,
+          password: pass,
+        }),
+      });
+
+      if (!response.ok) {
+        alert("Credenciales incorrectas.");
+        setLoading(false);
+        return;
+      }
+
+      const data = await response.json();
+
+      localStorage.setItem("token", data.token || "");
+      localStorage.setItem("loggedIn", "true");
+
+      navigate("/dashboard");
+    } catch (e) {
+      console.error(e);
+      alert("Error del servidor.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // ---------------------------------------------------
+  // GOOGLE LOGIN
+  // ---------------------------------------------------
+  useEffect(() => {
+    if (document.getElementById("google-client-script")) return;
+
+    const script = document.createElement("script");
+    script.src = "https://accounts.google.com/gsi/client";
+    script.async = true;
+    script.defer = true;
+    script.id = "google-client-script";
+    document.body.appendChild(script);
+
+    script.onload = () => {
+      if (!window.google) return;
+
+      window.google.accounts.id.initialize({
+        client_id:
+          "1049955535676-dc3hc1kms08q0r63dvpkmr7u30025a4r.apps.googleusercontent.com",
+        callback: handleGoogleResponse,
+      });
+
+      window.google.accounts.id.renderButton(
+        document.getElementById("googleLoginDiv"),
+        {
+          theme: "filled_blue",
+          size: "large",
+          width: "260",
+        }
+      );
+    };
+  }, []);
+
+  const handleGoogleResponse = async (response) => {
+    const idToken = response.credential;
+
+    const payload = JSON.parse(atob(idToken.split(".")[1]));
+
+    const body = {
+      idToken: idToken,
+      email: payload.email,
+      name: payload.name,
+      givenName: payload.given_name,
+      familyName: payload.family_name,
+    };
+
+    try {
+      const res = await fetch(API_GOOGLE, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          accept: "*/*",
+        },
+        body: JSON.stringify(body),
+      });
+
+      if (!res.ok) {
+        alert("Error al iniciar con Google.");
+        return;
+      }
+
+      const data = await res.json();
+
+      localStorage.setItem("token", data.token || "");
+      localStorage.setItem("loggedIn", "true");
+
+      navigate("/dashboard");
+    } catch (e) {
+      console.error(e);
+      alert("Error del servidor.");
+    }
   };
 
   return (
@@ -66,9 +172,21 @@ export default function Login() {
           />
         </div>
 
-        <button className="login-btn" onClick={handleLogin}>
-          Iniciar Sesión
-        </button>
+        {/* BOTONES EN GRUPO */}
+        <div className="buttons-group">
+          <button className="login-btn" onClick={handleLogin} disabled={loading}>
+            {loading ? "Validando..." : "Iniciar Sesión"}
+          </button>
+
+          <button
+            className="register-btn"
+            onClick={() => navigate("/registro")}
+          >
+            Crear una cuenta
+          </button>
+
+          <div id="googleLoginDiv"></div>
+        </div>
       </div>
 
       {/* IMÁGENES DERECHA */}

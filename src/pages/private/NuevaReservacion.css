@@ -1,84 +1,193 @@
 /* ================================
-   LAYOUT GENERAL
+   GENERAL LAYOUT
 ================================ */
 .reserva-layout {
   display: flex;
   gap: 40px;
-  padding: 25px 40px;
-  background: #f5f5f5;
+  padding: 30px 40px;
+  background: #faf5ec;
+  min-height: 100vh;
+  flex-wrap: wrap;
 }
 
 /* ================================
-   TARJETA PRINCIPAL FORMULARIO
+   CONTENEDOR IZQUIERDO
 ================================ */
 .reserva-card {
   flex: 2;
-  background: white;
-  padding: 28px;
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  border: 1px solid #eee;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 18px;
+  border: 1px solid #e2d6c7;
+  box-shadow: 0 6px 16px rgba(110, 90, 60, 0.12);
 }
 
 .reserva-title {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 700;
-  margin-bottom: 20px;
-  color: #3d3d3d;
+  margin-bottom: 25px;
+  color: #4a3f35;
 }
 
 /* ================================
-   LABELS
-================================ */
-.reserva-label {
-  font-weight: 600;
-  margin-top: 16px;
-  display: block;
-  color: #555;
-}
-
-/* ================================
-   INPUTS & SELECTS
+   UNIFICAR ESTILO DE TODAS LAS CAJAS
 ================================ */
 .reserva-input,
-.reserva-textarea {
+.reserva-select,
+.reserva-textarea,
+.auto-input,
+.auto-container input {
   width: 100%;
   padding: 12px;
-  border-radius: 10px;
-  border: 1px solid #d8d8d8;
-  background: #faf6ee;
-  margin-top: 6px;
+  border-radius: 12px;
+  border: 1px solid #d5c8b5;
+  background: #f8f3ea;
   font-size: 15px;
-  transition: 0.2s ease;
+  color: #4f4338;
+  margin-top: 6px;
+  transition: 0.25s ease;
 }
 
 .reserva-input:focus,
-.reserva-textarea:focus {
-  border-color: #4c84f4;
+.reserva-select:focus,
+.reserva-textarea:focus,
+.auto-container input:focus {
+  border-color: #c9a86a;
+  background: #fffdf8;
   outline: none;
-  background: #fffdf6;
+  box-shadow: 0 0 0 3px rgba(201, 168, 106, 0.25);
 }
 
+/* Labels */
+.reserva-label {
+  margin-top: 18px;
+  font-weight: 600;
+  color: #5a4e43;
+  font-size: 15px;
+}
+
+/* Textarea */
 .reserva-textarea {
-  height: 100px;
-  resize: none;
-}
-
-/* ICONO DEL CALENDARIO MÁS VISIBLE */
-input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(32%) sepia(70%) saturate(2500%) hue-rotate(210deg)
-    brightness(0.9);
-  cursor: pointer;
+  min-height: 120px;
+  resize: vertical;
 }
 
 /* ================================
-   DOS COLUMNAS (servicio + precio)
+   AUTO INPUT DROPDOWN
 ================================ */
-.row-two {
-  display: grid;
-  grid-template-columns: 1fr 140px;
-  gap: 15px;
-  margin-top: 12px;
+.auto-list {
+  max-height: 220px;
+  overflow-y: auto;
+  border: 1px solid #d5c8b5 !important;
+  border-radius: 12px !important;
+  background: white !important;
+  margin-top: 4px !important;
+  box-shadow: 0 6px 14px rgba(90, 70, 40, 0.15);
+}
+
+/* Scroll bonito */
+.auto-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.auto-list::-webkit-scrollbar-thumb {
+  background: #c9a86a;
+  border-radius: 10px;
+}
+
+.auto-list::-webkit-scrollbar-track {
+  background: #f3eadc;
+  border-radius: 10px;
+}
+
+.auto-item {
+  padding: 10px !important;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  color: #4a3f35;
+}
+
+.auto-item:hover {
+  background: #f8f3ea !important;
+}
+
+/* ================================
+   SELECT BONITO (Moneda y Pago)
+================================ */
+.reserva-select,
+.reserva-card select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #d5c8b5;
+  background: #f8f3ea;
+  font-size: 15px;
+  color: #4f4338;
+  margin-top: 6px;
+  transition: 0.25s ease;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%236b5d52' height='14' viewBox='0 0 24 24' width='14' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+
+.reserva-card select option {
+  background: #ffffff;
+  color: #4f4338;
+  padding: 10px;
+}
+
+/* ================================
+   BOTONES
+================================ */
+.btn-crear,
+.btn-factura {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 18px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.btn-crear {
+  background: #4c84f4;
+  color: white;
+}
+
+.btn-crear:hover {
+  background: #3a6ddd;
+}
+
+.btn-factura {
+  background: #129943;
+  color: white;
+}
+
+.btn-factura:hover {
+  background: #0f7d38;
+}
+
+/* ================================
+   CAJA ID DE RESERVA
+================================ */
+.id-box {
+  margin-top: 18px;
+  padding: 14px;
+  background: #fff4d4;
+  border: 1px solid #e8c88f;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #5a4e43;
 }
 
 /* ================================
@@ -86,70 +195,60 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 ================================ */
 .resumen-card {
   flex: 1;
-  background: white;
   padding: 25px;
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  border: 1px solid #eee;
+  border-radius: 20px;
+  border: 1px solid #e2d6c7;
+  background: #ffffff;
+  box-shadow: 0 6px 16px rgba(110, 90, 60, 0.12);
   height: fit-content;
 }
 
 .resumen-title {
-  font-size: 20px;
+  font-size: 21px;
   font-weight: 700;
-  margin-bottom: 18px;
+  margin-bottom: 15px;
+  color: #4a3f35;
 }
 
 .resumen-row {
   display: flex;
   justify-content: space-between;
-  padding: 10px 0;
-  border-bottom: 1px solid #eee;
+  padding: 12px 0;
+  border-bottom: 1px solid #efe5d7;
   font-size: 15px;
-}
-
-.resumen-total {
-  margin-top: 22px;
-  display: flex;
-  justify-content: space-between;
-  font-size: 18px;
-  font-weight: 700;
-  color: #3e2a00;
+  color: #4f4338;
 }
 
 /* ================================
-   BOTONES
+   FACTURA
 ================================ */
-.btn-crear {
-  margin-top: 20px;
+.factura-box {
   width: 100%;
-  padding: 14px;
-  background: #4c84f4;
-  color: white;
-  border-radius: 10px;
-  font-size: 16px;
+  margin-top: 25px;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #e2d6c7;
+  box-shadow: 0 6px 16px rgba(110, 90, 60, 0.12);
+}
+
+.factura-box h2 {
+  font-size: 24px;
   font-weight: 700;
-  border: none;
-  cursor: pointer;
-  transition: 0.2s ease;
+  margin-bottom: 10px;
+  color: #4a3f35;
 }
 
-.btn-crear:hover {
-  background: #366dde;
+.factura-box h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 6px;
+  color: #5a4e43;
 }
 
-.btn-cancelar {
-  margin-top: 12px;
-  width: 100%;
-  padding: 14px;
-  background: #e9e9e9;
-  border-radius: 10px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-  transition: 0.2s ease;
-}
-
-.btn-cancelar:hover {
-  background: #d6d6d6;
+.factura-box p {
+  margin: 4px 0;
+  font-size: 15px;
+  color: #4f4338;
 }

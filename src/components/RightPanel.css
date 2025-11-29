@@ -1,0 +1,178 @@
+/* PANEL DESLIZABLE */
+.right-panel {
+  position: fixed;
+  top: 0;
+  right: -420px;
+  width: 420px;
+  height: 100vh;
+  background: #ffffff; /* Panel blanco */
+  box-shadow: -6px 0 20px rgba(0, 0, 0, 0.12);
+  padding: 25px;
+  transition: 0.35s ease;
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  font-family: "Inter", sans-serif;
+}
+
+.right-panel.open {
+  right: 0;
+}
+
+/* HEADER */
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #9c7d5d;
+  margin-bottom: 15px;
+}
+
+.panel-header h2 {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* BOTÓN CERRAR */
+.btn-close {
+  background: transparent;
+  border: none;
+  font-size: 26px;
+  cursor: pointer;
+  color: #b69876;
+  transition: 0.25s;
+}
+
+.btn-close:hover {
+  color: #d0a882;
+}
+
+/* TARJETA PERFIL */
+.perfil-card {
+  background: #ffffff;
+  border: 1px solid #e7e2da;
+  padding: 18px;
+  border-radius: 12px;
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.perfil-avatar.grande {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  background: #f0ebe5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26px;
+  font-weight: 600;
+  color: #8f7355;
+  overflow: hidden;
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.perfil-nombre {
+  font-size: 20px;
+  color: #a57f59;
+  font-weight: 600;
+}
+
+.perfil-correo {
+  color: #94785e;
+  font-size: 14px;
+}
+
+.perfil-rol {
+  color: #b89673;
+  font-size: 13px;
+  margin-top: 4px;
+  font-weight: 600;
+}
+
+/* BOTÓN CAMBIAR FOTO (AZUL) */
+.perfil-btn {
+  width: 100%;
+  background: #4370d1; /* Azul */
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: 0.25s;
+}
+
+.perfil-btn:hover {
+  background: #6d90e6; /* Azul clarito */
+}
+
+/* INPUT GROUP */
+.perfil-input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.perfil-input-group label {
+  color: #9c7d5d;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+/* INPUTS BLANCOS */
+.perfil-input {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #d2c6b8;
+  background: #ffffff !important; /* Blanco puro */
+  color: #5a4a3a;
+  font-size: 14px;
+  transition: 0.25s;
+}
+
+.perfil-input::placeholder {
+  color: #bba994 !important;
+}
+
+.perfil-input:focus {
+  background: #ffffff !important;
+  border-color: #c8b39e;
+  box-shadow: 0 0 0 3px rgba(207, 183, 158, 0.25);
+}
+
+/* BOTÓN GUARDAR (AZUL) */
+.perfil-save-btn {
+  background: #4370d1; 
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.perfil-save-btn:hover {
+  background: #6d90e6;
+}
+
+/* FORZAR INPUTS BLANCOS EN TODO EL PANEL (por si hereda estilos globales) */
+.right-panel input {
+  background-color: #ffffff !important;
+  color: #333 !important;
+  border: 1px solid #d6c8b8 !important;
+}

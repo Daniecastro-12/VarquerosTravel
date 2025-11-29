@@ -12,10 +12,7 @@ export default function Sidebar() {
     { name: "Nueva Reservación", path: "/nueva-reservacion" },
     { name: "Servicios", path: "/servicios-admin" },
     { name: "Clientes", path: "/clientes" },
-    { name: "Pagos", path: "/pagos" },
-    { name: "Facturas", path: "/facturas" },
     { name: "Disponibilidad", path: "/disponibilidad" },
-    { name: "Reportes", path: "/reportes" },
   ];
 
   return (

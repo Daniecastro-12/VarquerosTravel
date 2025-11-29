@@ -13,6 +13,7 @@ import Destinos from "./pages/public/Destinos";
 import Servicios from "./pages/public/Servicios";
 import Contacto from "./pages/public/Contacto";
 import Login from "./pages/public/Login";
+import Register from "./pages/public/Register";
 
 // Páginas privadas
 import Dashboard from "./pages/private/Dashboard";
@@ -20,10 +21,7 @@ import Clientes from "./pages/private/Clientes";
 import ServiciosAdmin from "./pages/private/ServiciosAdmin";
 import NuevaReservacion from "./pages/private/NuevaReservacion";
 import Reservaciones from "./pages/private/Reservaciones";
-import Pagos from "./pages/private/Pagos";
-import Facturas from "./pages/private/Facturas";
 import Disponibilidad from "./pages/private/Disponibilidad";
-import Reportes from "./pages/private/Reportes";
 
 export default function App() {
   const location = useLocation();
@@ -33,13 +31,11 @@ export default function App() {
   const privateRoutes = [
     "/dashboard",
     "/clientes",
-    "/servicios-admin", // ← CORREGIDO
+    "/servicios-admin",
     "/reservaciones",
     "/nueva-reservacion",
-    "/pagos",
     "/facturas",
     "/disponibilidad",
-    "/reportes",
   ];
 
   const isPrivate = privateRoutes.some((route) =>
@@ -50,8 +46,12 @@ export default function App() {
     return <Navigate to="/login" replace />;
   }
 
-  const hideLayout = ["/login"];
-  const shouldHideLayout = hideLayout.includes(location.pathname);
+  const hideLayout = ["/login", "/registro"];
+
+  // ⭐⭐ ÚNICO CAMBIO QUE NECESITÁS
+  const shouldHideLayout = hideLayout.some(r =>
+    location.pathname.startsWith(r)
+  );
 
   return (
     <>
@@ -66,18 +66,16 @@ export default function App() {
           <Route path="/servicios" element={<Servicios />} />
           <Route path="/contacto" element={<Contacto />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/registro" element={<Register />} />
 
           {/* Private pages */}
           <Route element={<MainLayout />}>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/clientes" element={<Clientes />} />
-            <Route path="/servicios-admin" element={<ServiciosAdmin />} /> {/* ← CORRECTO */}
+            <Route path="/servicios-admin" element={<ServiciosAdmin />} />
             <Route path="/reservaciones" element={<Reservaciones />} />
             <Route path="/nueva-reservacion" element={<NuevaReservacion />} />
-            <Route path="/pagos" element={<Pagos />} />
-            <Route path="/facturas" element={<Facturas />} />
             <Route path="/disponibilidad" element={<Disponibilidad />} />
-            <Route path="/reportes" element={<Reportes />} />
           </Route>
 
         </Routes>
